@@ -1,0 +1,150 @@
+@charset "utf-8";
+@rem: 128rem;
+@import "index";
+
+.isSHow {
+  display: block;
+  left: 50% !important;
+}
+
+.main {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+
+  .bg-div {
+    width: 100%;
+    height: 100%;
+    background: url("../images/commonImg/pagebg-torf.png");
+    background-size: 1920/@rem 1280/@rem;
+    background-repeat: no-repeat;
+  }
+
+  .animate-bg {
+    .pos-a(560, 40, 3);
+    width: 500 / @rem;
+    height: 500 / @rem;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: auto 500 / @rem;
+    pointer-events: none;
+  }
+
+  .animate-step {
+    animation: step 3s steps(50, end) 1;
+    -webkit-animation: step 3s steps(50, end) 1;
+  }
+
+  .animate-award {
+    .pos-a(400, 40, 3);
+    width: 500 / @rem;
+    height: 700 / @rem;
+    background-size: auto 700 / @rem;
+    animation: award 3s steps(50, end) 1;
+    -webkit-animation: award 3s steps(50, end) 1;
+  }
+
+}
+
+.page2-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  .content {
+    width: 1080 / @rem;
+    height: 670 / @rem;
+    margin: 336 / @rem auto 0 458 / @rem;
+    position: relative;
+    div {
+      position: absolute;
+    }
+    .yes {
+      width:126/@rem;height:130/@rem;
+      left:144/@rem;top:245/@rem;
+      cursor: pointer;
+      background-image: url("../images/commonImg/torf-true.png");
+      background-size: cover;
+    }
+    .no {
+      width:126/@rem;height:130/@rem;
+      left:793/@rem;top:245/@rem;
+      cursor: pointer;
+      background-image: url("../images/commonImg/torf-false.png");
+      background-size: cover;
+    }
+    .mainPic {
+      width:312/@rem;height:312/@rem;
+      left:382/@rem; top:137/@rem;
+      background-image: url("../images/commonImg/torf-picbox.png");
+      background-size: cover;
+    }
+    .playBtn {
+      width:93/@rem;height:97/@rem;
+      left:50%;transform: translateX(-50%);bottom:10/@rem;
+      cursor: pointer;
+      background-image: url("../images/commonImg/torf-play.png");
+      background-size: cover;
+    }
+  }
+
+}
+
+
+ img {
+    display: block;
+    width: 100%;
+    height: auto;
+ }
+
+  .ivu-slider-wrap {
+    margin: 0.1rem 0 0 !important;
+  }
+
+  .audio {
+    width: 100%;
+    height: 0.31rem;
+    margin-bottom: 0.1rem;
+  }
+
+  @keyframes step {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -25000 / @rem 0;
+    }
+  }
+
+  @-webkit-keyframes step {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -25000 / @rem 0;
+    }
+  }
+
+  @keyframes award {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -25000 / @rem 0;
+    }
+  }
+
+  @-webkit-keyframes award {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -25000 / @rem 0;
+    }
+  }

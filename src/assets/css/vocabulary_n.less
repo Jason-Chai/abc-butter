@@ -1,0 +1,87 @@
+@charset "utf-8";
+@rem: 128rem;
+@import "index";
+
+.bg-div {
+  width: 1920/@rem;
+  height: 1280/@rem;
+  background: url("../images/commonImg/page12bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.animate-bg {
+  .scale(600, 600);
+  .pos-a(526, -100, 3);
+  background: url("../images/commonImg/anibg15-ani.png")
+    no-repeat;
+  background-size: auto 600 / @rem;
+  pointer-events: none;
+}
+.animate-step {
+  animation: step 3s steps(50) 1;
+  -webkit-animation: step 3s steps(50) 1;
+}
+
+
+.page2-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: justify;
+  width: 1585 / @rem;
+  margin: 300 / @rem auto 0;
+
+  .each-pic {
+    width: 377 / @rem;
+    height: 364 / @rem;
+
+    img {
+      display: inline-block;
+    }
+  }
+}
+
+ img {
+    display: block;
+    width: 100%;
+    height: auto;
+ }
+  
+  .ivu-slider-wrap {
+    margin: 0.1rem 0 0 !important;
+  }
+  
+  .audio {
+    width: 100%;
+    height: 0.31rem;
+    margin-bottom: 0.1rem;
+  }
+
+  @keyframes step {
+    0% {
+      background-position: 0 0;
+    }
+  
+    100% {
+      background-position: -(25000/500*600) / @rem 0;
+    }
+  }
+  
+  @-webkit-keyframes step {
+    0% {
+      background-position: 0 0;
+    }
+  
+    100% {
+      background-position: -(25000/500*600) / @rem 0;
+    }
+  }

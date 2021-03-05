@@ -1,0 +1,55 @@
+.canvas {
+  left: 51% !important;
+}
+.thisIsA {
+  width: 3.23rem !important;
+  height: 4rem !important;
+  margin-top: -1rem !important;
+  margin-right: -0.7rem !important;
+  //针对手机
+  @media screen and (max-width: 1000px) {
+    width: 1.615rem !important;
+    height: 2rem !important;
+    margin-top: -0.5rem !important;
+  }
+  display: block !important;
+  opacity: 0;
+}
+.thisIsA1 {
+  cursor: pointer !important;
+  width: 3.23rem !important;
+  height: 4rem !important;
+  margin-top: -1rem !important;
+  //针对手机
+  @media screen and (max-width: 1000px) {
+    width: 1.615rem !important;
+    height: 2rem !important;
+    margin-top: -0.5rem !important;
+  }
+  opacity: 0;
+}
+.center {
+  .letterA {
+    .letterA-A {
+      width: 1.8rem;
+      height: 1.5rem;
+
+      //针对手机
+      @media screen and (max-width: 1000px) {
+        width: 0.9rem;
+        height: 0.75rem;
+      }
+    }
+
+    .letterA-aa {
+      width: 1.6rem;
+      height: 1.6rem;
+
+      //针对手机
+      @media screen and (max-width: 1000px) {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+    }
+  }
+}

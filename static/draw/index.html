@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>111.0</title>
+    <meta name="baidu-site-verification" content="DW6jBPeSqe" />
+    <meta name="keyword" content="水彩中国" />
+    <meta name="description" content="水彩中国" />
+    <meta name="viewport"
+      content="initial-scale=1,width=device-width,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <script type="text/javascript">
+             // function IsPC() {
+             //           var userAgentInfo = navigator.userAgent;
+             //           var Agents = ["Android", "iPhone",
+             //            "SymbianOS", "Windows Phone",
+             //            "iPad", "iPod"];
+             //           var flag = true;
+             //          for (var v = 0; v < Agents.length; v++) {
+             //          if (userAgentInfo.indexOf(Agents[v]) > 0) {
+             //          flag = false;
+             //                      break;
+             //         }
+             //       }
+             //       return flag;
+             // } 
+             // function iftel(){
+             //     if(IsPC()){
+
+             //     }else{
+             //       var a = document.createElement('a');
+             //         a.href = "tels.html";
+             //         a.click();
+             //     }
+             // }
+             // iftel();
+    </script>
+    <script type="text/javascript" src="./js/jqs.js"></script>
+    <script type="text/javascript" src="./js/myjs.js"></script>
+    <link rel="stylesheet" href="./css/mycss.css">
+    <style>
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .canvasMain {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .canvasMoudle {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .canvasPanl {
+        position: absolute;
+        height: 18%;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+        z-index: 15;
+        /* background: url('./assets/images/drawBg.png') center center no-repeat;
+        background-size: 100% 100%;
+        border: 1px solid red;; */
+      }
+
+      .tools {
+        height: 100%;
+        width: 26%;
+        margin: 0 auto;
+        transform: translateX(-5%);
+      }
+
+      .canvasPanl::after {
+        position: relative;
+      }
+
+      .tools>li {
+        display: block;
+        float: left;
+        width: 33%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="canvasMoudle">
+      <div class="canvasMain">
+
+        <div class="canvasPanl">
+          <div class="tools">
+            <li onclick="openPen()"></li>
+            <li onclick="clearCur()"></li>
+            <li onclick="cachu()"></li>
+          </div>
+
+          <!-- <li onclick="baocun()"></li> -->
+        </div>
+        <canvas id="canvalue" class="bottoms"></canvas>
+        <canvas id="cantest" class="tops" onmousemove="t_test()" onmousedown="ready()" onmouseup="upms()"></canvas>
+        <div style="display: none;" class="panl" id="box">
+          <div id="title" title="拖拽我可以拖动面板" onmousedown="panto()" onmouseup="upms()" onmousemove="">
+          </div>
+          <div class="colortest clearfix" id="colortest">
+            <!--调色板ID=colortest-->
+          </div>
+          <div class="setcolor">
+            <i class="icon_lz" onclick="colorqh()" title="试试其他方式？"></i>
+            <div class="colorss">
+              <div class="rgbabox" id="rgbabox">
+                <!--rgbabox 内只有inbox-->
+                <div class="inbox">
+                  <span title="更改颜料中红色素的含量">红:</span>
+                  <div class="huacao" id="rgbjie">
+                    <div class="redbut rgbbut" id="redbut" onmousedown="rgbato(this)" onmouseup="upms()" onmousemove="">
+                    </div>
+                    <div class="tiao redt" style="width:0%;"></div>
+                  </div>
+                </div>
+                <div class="inbox">
+                  <span title="更改颜料中绿色素的含量">绿:</span>
+                  <div class="huacao">
+                    <div class="lvbut rgbbut" id="redbut" onmousedown="rgbato(this)" onmouseup="upms()" onmousemove="">
+                    </div>
+                    <div class="tiao lvt" style="width:0%;"></div>
+                  </div>
+                </div>
+                <div class="inbox">
+                  <span title="更改颜料中蓝色素的含量">蓝:</span>
+                  <div class="huacao">
+                    <div class="lanbut rgbbut" id="redbut" onmousedown="rgbato(this)" onmouseup="upms()" onmousemove="">
+                    </div>
+                    <div class="tiao lant" style="width:0%;"></div>
+                  </div>
+                </div>
+                <div class="inbox">
+                  <span title="可以使颜料透明">透明:</span>
+                  <div class="huacao touming">
+                    <div class="tbut rgbbut" id="redbut" onmousedown="rgbato(this)" onmouseup="upms()" onmousemove=""
+                      style="margin-left:95px;">
+                    </div>
+                    <div class="tiao tt" style="width:100%;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="c16" id="c16">
+                <div class="bagsbox">
+                  <label title="精确调整红色：0~255！">红:
+                    <input maxlength="3" type="text" class="colorc16 redc16" value="0" oninput="inputc(this)"
+                      onkeyup="this.value=this.value.replace(/\D/g,'')"
+                      onafterpaste="this.value=this.value.replace(/\D/g,'')"></label>
+                </div>
+                <div class="bagsbox">
+                  <label title="精确调整绿色：0~255！">绿:
+                    <input maxlength="3" type="text" class="colorc16 lvc16" value="0" oninput="inputc(this)"
+                      onkeyup="this.value=this.value.replace(/\D/g,'')"
+                      onafterpaste="this.value=this.value.replace(/\D/g,'')"></label>
+                </div>
+                <div class="bagsbox">
+                  <label title="精确调整蓝色：0~255！">蓝:
+                    <input maxlength="3" type="text" class="colorc16 lanc16" value="0" oninput="inputc(this)"
+                      onkeyup="this.value=this.value.replace(/\D/g,'')"
+                      onafterpaste="this.value=this.value.replace(/\D/g,'')"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sizes">
+            <span>笔触：</span>
+            <div class="huacaos" id="rgbjie">
+              <div class="butsize" id="sizebuts" onmousedown="sizeto()" onmouseup="upms()" onmousemove="">
+              </div>
+              <div class="tiao tiaosize" style="width:10px;"></div>
+            </div>
+            <select name="" id="bei" onchange="xiu()">
+              <option style="color:#6af">1</option>
+              <option style="color:#af6">2</option>
+              <option style="color:#f6a">3</option>
+            </select>
+          </div>
+          <!-- <select name="" id="types" class="types" onchange="typeos(this)">
+             <option value="1">水彩</option>
+             <option value="2">水墨</option>
+             <option value="3">毛笔</option>
+           </select> -->
+          <a class="xiang" onclick="cachu()">橡皮擦</a>
+          <a class="xiang" onclick="baocun()">保存</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      $('.bitou li').each(function (i, t) {
+        console.log(i, t);
+        $(this).on('click', function () {
+          if (i == 0) {
+            basize = 20;
+          } else if (i == 1) {
+            basize = 25;
+          } else {
+            basize = 30;
+          }
+        })
+      })
+
+
+      $('.sban li').each(function (i, t) {
+        console.log(i, t);
+        $(this).on('click', function () {
+          if (i == 0) {
+            colorrgba = new Array(253, 206, 58, 1);
+          } else if (i == 1) {
+            colorrgba = new Array(229, 26, 27, 1);
+          } else if (i == 2) {
+            colorrgba = new Array(251, 147, 52, 1);
+          } else if (i == 3) {
+            colorrgba = new Array(54, 43, 218, 1);
+          } else if (i == 4) {
+            colorrgba = new Array(162, 248, 54, 1);
+          } else if (i == 5) {
+            colorrgba = new Array(55, 222, 246, 1);
+          }
+          colortest.style.backgroundColor = "rgba(" + colorrgba[0] + "," + colorrgba[1] + "," + colorrgba[2] + "," + colorrgba[3] + ")";
+        })
+      })
+
+
+
+    </script>
+  </body>
+
+</html>

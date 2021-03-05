@@ -1,0 +1,165 @@
+@charset "utf-8";
+@rem: 128rem;
+@import "index";
+
+.isShowVideo {
+  display: block;
+}
+
+.isShowVideo1 {
+  display: none;
+}
+
+.video-player {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+.main {
+  width: 100%;
+  height: 100%;
+}
+.canvasMain {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .con-pic {
+    width: 100%;
+    height: auto;
+    .pos-a(10, 10, 3);
+  }
+
+  &::after {
+    position: relative;
+  }
+}
+.page3-content {
+  position: absolute;
+  width: 149 / @rem;
+  height: 672 / @rem;
+  top: 205 / @rem;
+  left: 1572 / @rem;
+  z-index: 5;
+  animation: rollIn 1s 1s both;
+
+  .content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    .each-pic {
+      width: 149 / @rem;
+      height: 95 / @rem;
+      cursor: pointer;
+
+      img {
+        display: block;
+      }
+    }
+  }
+}
+.bg-div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url("../images/commonImg/page3bg.png");
+  background-size: 1920/@rem 1280/@rem;
+  background-repeat: no-repeat;
+  .canvas {
+    animation: zoomIn 1s 1s both;
+    position: absolute;
+    width: 1322 / @rem;
+    height: 742 / @rem;
+    top: 205 / @rem;
+    left: 260 / @rem;
+    background-image: url("../images/commonImg/photoKuang6.png");
+    background-size: 100% 100%;
+    display: flex;
+    justify-items: center;
+    z-index: 3;
+    padding: 0.5rem;
+    box-sizing: border-box;
+
+    img {
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 1322 / @rem;
+      height: 742 / @rem;
+    }
+
+    .canvasMain {
+      width: 1127 / @rem;
+      height: 650 / @rem;
+    }
+  }
+  .animate-bg {
+    .scale(600, 600);
+    position: absolute;
+    bottom: 100/@rem;
+    left: 0;
+    // .pos-a(500, 0, 5);
+    background: url("../images/commonImg/octopus.png") no-repeat;
+    background-size: auto 600 / @rem;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .animate-step {
+    animation: step 3s steps(44) 1;
+    -webkit-animation: step 3s steps(44) 1;
+  }
+  @keyframes step {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -26400 / @rem 0;
+    }
+  }
+
+  @-webkit-keyframes step {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -26400 / @rem 0;
+    }
+  }
+}
+
+
+ img {
+    display: block;
+    width: 100%;
+    height: auto;
+ }
+
+  .ivu-slider-wrap {
+    margin: 0.1rem 0 0 !important;
+  }
+
+  .audio {
+    width: 100%;
+    height: 0.31rem;
+    margin-bottom: 0.1rem;
+  }

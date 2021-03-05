@@ -1,0 +1,25 @@
+.ivu-form-item .ivu-form-item-content{
+    line-height:24px;
+}
+.ivu-form .ivu-form-item-label{
+    padding: 6px 12px 6px 0;
+}
+.ivu-select-single .ivu-select-selection {
+    height: 24px;
+    position: relative;
+}
+.ivu-select-single .ivu-select-selection .ivu-select-placeholder, .ivu-select-single .ivu-select-selection .ivu-select-selected-value{
+   
+    height: 24px;
+    line-height: 24px;
+    
+}
+.ivu-input-group-append, .ivu-input-group-prepend{
+    background: #fff;
+}
+.ivu-input-group-append{
+    width:60px;
+}
+.ivu-btn{
+    padding: 3px 22px 4px;
+}

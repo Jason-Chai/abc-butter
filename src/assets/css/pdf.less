@@ -1,0 +1,262 @@
+@charset "utf-8";
+@rem: 128rem;
+@import "index";
+
+.canvasMain {
+  position: absolute;
+  z-index: 102;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  &::after {
+    position: relative;
+  }
+}
+
+.ivu-slider-wrap {
+  margin: 0.1rem 0 0 !important;
+}
+
+.audio {
+  width: 100%;
+  height: 100%;
+  /* animation: fadeIn 1s 5.5s both; */
+  /* opacity: 0; */
+}
+
+.page-trans-box {
+  width: 1500/@rem;
+  min-height: 100/@rem;
+  border-radius: 3/@rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 24/@rem;
+  color: #fff;
+  font-family: "microsoft yahei";
+  line-height: 30/@rem;
+  text-align: center;
+  padding-top: 10/@rem;
+  padding-bottom: 10/@rem;
+  position: absolute;
+  bottom: 0/@rem;
+  left: 0/@rem;
+  z-index: 102;
+  // 纵向居中
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-ques-box {
+  width: 401/@rem;
+  height: 150/@rem;
+  background-image: url(../images/commonImg/pdf-page/ques-box.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  line-height: 30/@rem;
+  font-size: 24/@rem;
+  font-family: 'nunito'; // 纵向居中
+  color: #ffffff;
+  text-align: left;
+  position: absolute;
+  padding: 16/@rem 10/@rem 0;
+  top: 111/@rem;
+  left: 1333/@rem;
+  z-index: 102;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  @media screen and (max-width: 1000px) {
+    left: 1260/@rem;
+  }
+}
+
+.icon-play-action {
+  .scale(41, 41);
+  .pos-a(62, 1734, 102);
+  cursor: pointer;
+}
+
+.page-content {
+  position: absolute;
+  width: 1502/@rem;
+  height: 750/@rem;
+  top: 220/@rem;
+  left: 210/@rem;
+  z-index: 101;
+
+  img {
+    height: 99.5%;
+    display: block;
+    float: left;
+    &.activeNext {
+      transform-origin: 0 50%;
+      transform:perspective(800px) rotateY(0deg);
+      animation-name:fanyeNext;animation-duration:1s;animation-iteration-count:1;animation-timing-function:linear;
+    }
+    &.activePrev {
+      transform-origin: 100% 50%;
+      transform:perspective(800px) rotateY(0deg);
+      animation-name:fanyePrev;animation-duration:1s;animation-iteration-count:1;animation-timing-function:linear;
+    }
+  }
+
+  &.main {
+    background-color: transparent;
+
+    img {
+      margin-left: 25%;
+      width: 50%;
+    }
+  }
+}
+
+.page-menu {
+  display: flex;
+  position: absolute;
+  top: 541/@rem;
+  left: 70/@rem;
+  width: 1779/@rem;
+  height: 113/@rem;
+  // transform: translateY(50%);
+  justify-content: space-between;
+  z-index: 103;
+  pointer-events: none;
+
+  .prev-button,
+  .next-button {
+    width: 126/@rem;
+    height: 118/@rem;
+    cursor: pointer;
+    pointer-events: auto;
+    img {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
+
+// 小鸟动画
+.bird-wrap {
+    position: absolute;
+    width: 1500/@rem;
+    height: 750/@rem;
+    top: 220/@rem;
+    left: 210/@rem;
+    padding-right:150/@rem;
+    padding-bottom:150/@rem;
+    z-index: 103;
+    pointer-events: none;
+
+    .bird-animation {
+      position: relative;
+      width: 150/@rem;
+      height: 150/@rem;
+      z-index: 200;
+      opacity: 0.7;
+      pointer-events: auto;
+    }
+    .define-keyframe(0,-7500,step0);
+    .define-keyframe(0,-7200,step1);
+    .define-keyframe(0,-7350,step2);
+    .define-keyframe(0,-7500,step3);
+    .bird0 {
+      background-image: url(../images/commonImg/pdf-page/bird-ani-0.png);
+      background-size: auto 150 / @rem;
+      background-repeat: no-repeat;
+      &.active {
+        animation: step0 1.8s steps(50, start) both 1;
+        -webkit-animation: step0 1.8s steps(50, start) both 1;
+      }
+    }
+    .bird1 {
+      background-image: url(../images/commonImg/pdf-page/bird-ani-1.png);
+      background-size: auto 150 / @rem;
+      background-repeat: no-repeat;
+      &.active {
+        animation: step1 1.8s steps(48, start) both 1;
+        -webkit-animation: step1 1.8s steps(48, start) both 1;
+      }
+    }
+    .bird2 {
+      background-image: url(../images/commonImg/pdf-page/bird-ani-2.png);
+      background-size: auto 150 / @rem;
+      background-repeat: no-repeat;
+      &.active {
+        animation: step2 1.8s steps(49, start) both 1;
+        -webkit-animation: step2 1.8s steps(49, start) both 1;
+      }
+    }
+    .bird3 {
+      background-image: url(../images/commonImg/pdf-page/bird-ani-3.png);
+      background-size: auto 150 / @rem;
+      background-repeat: no-repeat;
+      &.active {
+        animation: step3 1.8s steps(50, start) both 1;
+        -webkit-animation: step3 1.8s steps(50, start) both 1;
+      }
+    }
+}
+
+.define-keyframe(@begin,@end,@name){
+  @keyframes @name{
+    from {
+      background-position-x: @begin;
+    }
+    to {
+      background-position-x: @end/@rem;
+    }
+  }
+  @-webkit-keyframes @name{
+    from {
+      background-position-x: @begin;
+    }
+    to {
+      background-position-x: @end/@rem;
+    }
+  }
+  @-moz-keyframes @name{
+    from {
+      background-position-x: @begin;
+    }
+    to {
+      background-position-x: @end/@rem;
+    }
+  }
+  @-o-keyframes @name{
+    from {
+      background-position-x: @begin;
+    }
+    to {
+      background-position-x: @end/@rem;
+    }
+  }
+}
+
+
+
+@keyframes fanyeNext{
+  0% {
+    transform: perspective(1500px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(1500px) rotateY(-90deg); opacity: 1;
+  }
+  100% {
+    transform: perspective(1500px) rotateY(-180deg); opacity: 0;
+  }
+}
+@keyframes fanyePrev{
+  0% {
+    transform: perspective(1500px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(1500px) rotateY(90deg); opacity: 1;
+  }
+  100% {
+    transform: perspective(1500px) rotateY(180deg); opacity: 0;
+  }
+}

@@ -1,0 +1,83 @@
+﻿<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2018-03-13 22:13:52
+ * @LastEditTime: 2019-09-12 10:17:42
+ * @LastEditors: Please set LastEditors
+ -->
+ <!doctype html>
+ <html lang="zh-cmn-Hans">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport"
+           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>涂鸦板</title>
+     <link rel="stylesheet" href="//at.alicdn.com/t/font_584725_0nyjbeaxjw2ep14i.css">
+     <!-- <link rel="stylesheet" href="css/style.css"> -->
+     <script src="js/jqs.js"></script>
+     <style>
+        body {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+  
+        .canvasMain {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+  
+        .canvasMoudle {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+  
+        .canvasPanl {
+          position: absolute;
+          height: 18%;
+          bottom: 0.1rem;
+          left: 0;
+          width: 100%;
+          z-index: 15;
+        }
+        .canvasPanl::after {
+          position: relative;
+        }
+  
+        .tools {
+          height: 100%;
+          width: 30%;
+          margin: 0 auto;
+          transform: translateX(-5%);
+        }
+        .tools>li {
+          display: block;
+          float: left;
+          width: 33%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+        }
+       
+  
+        
+      </style>
+ </head>
+ <body>
+   <div class="canvasMain">
+        <canvas id="drawing-board"></canvas>
+        <div class="canvasPanl">
+            <div class="tools">
+                <li onclick="openPen()"></li>
+                <li onclick="clearCur()"></li>
+                <li id="clear"></li>
+            </div>
+        </div>
+   </div>
+    
+ </body>
+ <script src="js/main.js"></script>
+ </html>

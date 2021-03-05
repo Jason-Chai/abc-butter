@@ -1,0 +1,129 @@
+@charset "utf-8";
+.pos-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.isSHow {
+  display: block;
+  left: 50% !important;
+}
+.div-bg {
+  width: 15rem;
+  height: 8.4375rem;
+  background: url("../images/commonImg/page4bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0 auto;
+}
+.animate-bg {
+  width: 4.6875rem;
+  height: 4.6875rem;
+  position: absolute;
+  top: 3.703125rem;
+  left: -0.390625rem;
+  z-index: 5;
+  background: url("../images/commonImg/panda.png") no-repeat;
+  background-size: auto 4.6875rem;
+  pointer-events: none;
+}
+.animate-step {
+  animation: step 3s steps(50) 1;
+  -webkit-animation: step 3s steps(50) 1;
+}
+.page4-content {
+  position: absolute;
+  width: 15rem;
+  height: 8.4375rem;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+}
+.page4-content .content {
+  width: 10.15625rem;
+  height: 6.5859375rem;
+  position: relative;
+  margin: 1.5625rem auto 0;
+  background-image: url("../images/commonImg/photoKuang4.png");
+  background-size: 100% 100%;
+  padding: 0.703125rem 0.546875rem;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+.page4-content .content .content-left {
+  position: absolute;
+  left: -1.34375rem;
+  top: 0.09375rem;
+}
+.page4-content .content .content-right {
+  height: 90%;
+  display: flex;
+  padding-left: 0.46875rem;
+  padding-right: 0.46875rem;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4%;
+}
+.page4-content .content .content-right .item {
+  width: 1.8671875rem;
+  height: 1.8671875rem;
+  background: #ffffff;
+  border-radius: 0.078125rem;
+  position: relative;
+  margin: 0 0.078125rem 0.15625rem 0.078125rem;
+}
+.page4-content .content .content-right .item .pic {
+  width: 100%;
+  display: inline-block;
+}
+.page4-content .content .content-right .item .pic img {
+  width: 100%;
+  display: block;
+}
+.page4-content .content .content-right .item .text {
+  position: absolute;
+  bottom: 0rem;
+  left: 2%;
+  width: 96%;
+  background-size: 100% 100%;
+}
+.page4-content .content .content-right .item .text img {
+  width: 100%;
+  display: block;
+}
+/*通过屏幕宽高比 进行页面适配 ~ 强制编译 */
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ivu-slider-wrap {
+  margin: 0.1rem 0 0 !important;
+}
+.audio {
+  width: 100%;
+  height: 0.31rem;
+  margin-bottom: 0.1rem;
+}
+@keyframes step {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -234.375rem 0;
+  }
+}
+@-webkit-keyframes step {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -234.375rem 0;
+  }
+}

@@ -1,0 +1,460 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+body{
+  background-color: #f5f5f5;
+}
+html, body{
+  height: 100%;
+}
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, p, blockquote, th, td{
+  font-family: "microsoft yahei","宋体",Tahoma,Verdana,Arial,Helvetica,sans-serif;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  font-size: 0;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pos {
+  position: relative;
+}
+
+.blo {
+  display: block;
+}
+
+/* banner */
+.banner .swiper-pagination .swiper-pagination-bullet {
+  width: 26px;
+  height: 5px;
+  border-radius: inherit;
+}
+
+/* 分页 */
+.pager {
+  font-size: 14px;
+}
+
+.pager .ivu-page-item-active {
+  background: #FA5552;
+}
+
+.pager .ivu-page-item:hover {
+  background: #FA5552;
+}
+
+.pager .ivu-page-item-active a,
+.pager .ivu-page-item-active:hover a {
+  background: #FA5552;
+  color: #fff;
+}
+
+.pager .ivu-page-item-active {
+  border-color: #FA5552;
+}
+
+.pager .ivu-page-item:hover {
+  border-color: #FA5552;
+  color: #fff;
+}
+
+.pager .ivu-page-item:hover a {
+  color: #fff;
+}
+
+.pager .ivu-page-next:hover,
+.pager .ivu-page-prev:hover {
+  border-color: #FA5552;
+}
+
+.pager .ivu-page-next:hover a,
+.pager .ivu-page-prev:hover a {
+  color: #666;
+}
+
+.pager .ivu-page-disabled:hover {
+  border-color: #dcdee2
+}
+
+.pager .ivu-page-options-elevator input:hover {
+  border-color: #FA5552;
+}
+
+.six .ivu-progress-bg {
+  background-color: #FF3F44;
+}
+
+.six .ivu-progress-success-bg {
+  background-color: #FF7B70;
+
+}
+/* 智享列表进度条 */
+.intel  li.bg .ivu-progress-wrong .ivu-progress-bg{
+    background-color: #999;
+}
+.zxList li.bg .six .ivu-progress-bg{
+  background-color: #999;
+}
+#udesk_btn a{
+  width: 40px !important;
+  height: 40px !important;
+  visibility: hidden;
+}
+.ivu-page-options-elevator input:focus{
+  border-color: #FA5552;
+}
+.ivu-progress-text-inner{
+  color:#999;
+}
+.ivu-progress-success .ivu-progress-bg{
+
+    background-color:#999;
+}
+
+.investContent .ivu-icon-ios-checkmark-circle:before{
+  content:"100%"
+}
+
+
+.a_page_2 .ivu-slider-wrap{
+  /* margin:.1rem 0; */
+}
+
+
+
+
+
+
+.video-js.vjs-ended .vjs-big-play-button, .video-js.vjs-paused .vjs-big-play-button, .vjs-paused.vjs-has-started.vjs-custom-skin > .video-js .vjs-big-play-button{
+  width: 2.17rem !important;
+  height: 2.17rem !important;
+  background: url('../images/play.png') center center no-repeat;
+  background-size:100% 100%;
+  font-size:inherit;
+  border:inherit;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%)
+}
+.video-js:hover .vjs-big-play-button, .video-js .vjs-big-play-button:focus{
+  border-color:transparent !important;
+  background-color:transparent !important;
+  transition: inherit !important;
+  border: transparent !important;
+}
+.vjs-icon-play:before, .video-js .vjs-big-play-button .vjs-icon-placeholder:before, .video-js .vjs-play-control .vjs-icon-placeholder:before{
+  content: '' !important;
+}
+.ivu-slider-wrap{
+  margin: 0 !important;
+}
+
+
+.video-js{
+  background-color: transparent !important;
+  margin-top:-.25rem;
+}
+@media screen and (max-width: 1000px) {
+.video-js.vjs-ended .vjs-big-play-button, .video-js.vjs-paused .vjs-big-play-button, .vjs-paused.vjs-has-started.vjs-custom-skin > .video-js .vjs-big-play-button{
+    width: 1.17rem !important;
+    height: 1.17rem !important;
+}
+}
+.ivu-slider-button-wrap .ivu-tooltip {
+  display: none;
+}
+
+.ivu-slider-bar,.ivu-slider-wrap {
+  background-color:transparent;
+}
+
+
+
+
+.ivu-slider-wrap{
+  width: 90% !important;
+}
+.c1_d1 .ivu-slider-bar,.c1_d1 .ivu-slider-wrap{
+  color: #ff7444;
+  background: #ff7444;
+  border-radius: 5px;
+}
+.c1_d1 .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.48rem;
+    height: 0.42rem;
+    position: absolute;
+    background: url('../images/silderbg3.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -0.1rem;
+    left: -0.2rem;
+}
+
+.c1_d2 .ivu-slider-bar,.c1_d2 .ivu-slider-wrap{
+  color: #05aaff;
+  background: #05aaff;
+  border-radius: 5px;
+}
+.c1_d2 .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.48rem;
+    height: 0.42rem;
+    position: absolute;
+    background: url('../images/silderbg3.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -14px;
+    left: -2px;
+}
+/*leadIn menu*/
+.leadInM .ivu-slider-button-wrap .ivu-tooltip {
+  display: none;
+}
+.leadInM .ivu-slider-bar,.leadInM .ivu-slider-wrap {
+  background-color:transparent;
+}
+
+.leadInM .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.66rem;
+    height: 0.42rem;
+    position: absolute;
+    background: url('../images/silderbg2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -0.1rem;
+    left: -0.31rem;
+}
+/*Vocabulary menu*/
+.vM .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.48rem;
+    height: 0.42rem;
+    position: absolute;
+    background: url('../images/silderbg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -0.1rem;
+    left: -2px;
+}
+/*Vocabulary menu new*/
+.vMN .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.54rem; /*70/128*/
+  height: 0.57rem;
+  position: absolute;
+  background: url('../images/silderbg12.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.25rem;
+  left: -2px;
+}
+/* look,listen and choose*/
+.chooseM .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.67rem; 
+    height: 0.75rem;
+    position: absolute;
+    background: url('../images/silderbg3.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -0.36rem;
+    left: -15px;
+}
+/* true or fasle*/
+.torfM .ivu-slider-wrap {
+    width: 100% !important;
+}
+.torfM .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.515rem;
+    height: 0.414rem;
+    position: absolute;
+    background: url('../images/silderbg-torf.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -0.16rem;
+    left: 0.04rem;
+}
+/* let's sing */
+.singM .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.53rem;
+    height: 0.58rem;
+    position: absolute;
+    background: url('../images/silderbg4.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -0.25rem;
+    left: -15px;
+}
+
+/* Look listen and circle */
+.circleM .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.53rem;
+    height: 0.5rem;
+    position: absolute;
+    background: url('../images/silderbg5.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -0.25rem;
+    left: -15px;
+}
+.ivu-slider-button-wrap{
+    transform: none;
+}
+/* Look listen and number */
+.numberM .ivu-slider-button-wrap::before{
+    content: "";
+    width: 0.55rem;
+    height: 0.60rem;
+    position: absolute;
+    background: url('../images/silderbg-number.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 99;
+    top: -0.25rem;
+    left: -20px;
+}
+/* sentenceM */
+.sentenceM .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.53rem;
+  height: 0.38rem;
+  position: absolute;
+  background: url('../images/silderbg6.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.1rem;
+  left: -15px;
+}
+/* sentenceMN  new */
+.sentenceMN .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.48rem;
+  height: 0.4rem;
+  position: absolute;
+  background: url('../images/silderbg13.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.18rem;
+  left: -15px;
+}
+
+/* look listen and order */
+.orderM .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.38rem;
+  height: 0.38rem;
+  position: absolute;
+  background: url('../images/silderbg8.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.1rem;
+  left: -15px;
+}
+/* look listen and order */
+.pictureM .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.37rem;
+  height: 0.4rem;
+  position: absolute;
+  background: url('../images/silderbg7.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.1rem;
+  left: -15px;
+}
+ /* listen and choose*/
+.listenchooseM .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.54rem;
+  height: 0.53rem;
+  position: absolute;
+  background: url('../images/silderbg11.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.2rem;
+  left: -15px;
+}
+
+/* pdf menu */
+.pdfMenu .ivu-slider-wrap {
+  width:100% !important;
+  height:100%;
+}
+.pdfMenu .ivu-slider-wrap .ivu-slider-bar {
+  height:100%;
+  background:url('../images/commonImg/pdf-page/soundTop9.png');
+  background-size: cover;
+  border-radius: 0;
+}
+.pdfMenu .ivu-slider-button-wrap {
+  top:0;
+  height:100%;
+  transform: translateX(-50%);
+}
+/* .ivu-slider-button-wrap::before {
+  content: "";
+  width: 0.48rem;
+  height: 0.42rem;
+  position: absolute;
+  background: url(../images/levelTwoCommonImg/silderbg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.1rem;
+  left: -0.2rem;
+} */
+/* .ivu-slider-bar {
+  background: #ff7444 !important;
+}
+.ivu-slider-wrap {
+  background: #ff7444 !important;
+} */
+
+
+@font-face{
+     font-family: 'nunito';
+     src: url('./font/nunito-bold.ttf') format('truetype');
+}
+
+
+  /*通过屏幕宽高比 进行页面适配 ~ 强制编译 */
+  /* @media only screen and (min-aspect-ratio: ~'1920/1080'){
+    html,body{
+      overflow: auto !important;
+    }
+    .main,.level2-main,.div-bg{
+      overflow-y: auto !important ;
+    }
+  } */

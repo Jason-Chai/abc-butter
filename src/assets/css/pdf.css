@@ -1,0 +1,351 @@
+@charset "utf-8";
+.pos-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.canvasMain {
+  position: absolute;
+  z-index: 102;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.canvasMain::after {
+  position: relative;
+}
+.ivu-slider-wrap {
+  margin: 0.1rem 0 0 !important;
+}
+.audio {
+  width: 100%;
+  height: 100%;
+  /* animation: fadeIn 1s 5.5s both; */
+  /* opacity: 0; */
+}
+.page-trans-box {
+  width: 11.71875rem;
+  min-height: 0.78125rem;
+  border-radius: 0.0234375rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 0.1875rem;
+  color: #fff;
+  font-family: "microsoft yahei";
+  line-height: 0.234375rem;
+  text-align: center;
+  padding-top: 0.078125rem;
+  padding-bottom: 0.078125rem;
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  z-index: 102;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page-ques-box {
+  width: 3.1328125rem;
+  height: 1.171875rem;
+  background-image: url(../images/commonImg/pdf-page/ques-box.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  line-height: 0.234375rem;
+  font-size: 0.1875rem;
+  font-family: 'nunito';
+  color: #ffffff;
+  text-align: left;
+  position: absolute;
+  padding: 0.125rem 0.078125rem 0;
+  top: 0.8671875rem;
+  left: 10.4140625rem;
+  z-index: 102;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 1000px) {
+  .page-ques-box {
+    left: 9.84375rem;
+  }
+}
+.icon-play-action {
+  width: 0.3203125rem;
+  height: 0.3203125rem;
+  position: absolute;
+  top: 0.484375rem;
+  left: 13.546875rem;
+  z-index: 102;
+  cursor: pointer;
+}
+.page-content {
+  position: absolute;
+  width: 11.734375rem;
+  height: 5.859375rem;
+  top: 1.71875rem;
+  left: 1.640625rem;
+  z-index: 101;
+}
+.page-content img {
+  height: 99.5%;
+  display: block;
+  float: left;
+}
+.page-content img.activeNext {
+  transform-origin: 0 50%;
+  transform: perspective(800px) rotateY(0deg);
+  animation-name: fanyeNext;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+.page-content img.activePrev {
+  transform-origin: 100% 50%;
+  transform: perspective(800px) rotateY(0deg);
+  animation-name: fanyePrev;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+.page-content.main {
+  background-color: transparent;
+}
+.page-content.main img {
+  margin-left: 25%;
+  width: 50%;
+}
+.page-menu {
+  display: flex;
+  position: absolute;
+  top: 4.2265625rem;
+  left: 0.546875rem;
+  width: 13.8984375rem;
+  height: 0.8828125rem;
+  justify-content: space-between;
+  z-index: 103;
+  pointer-events: none;
+}
+.page-menu .prev-button,
+.page-menu .next-button {
+  width: 0.984375rem;
+  height: 0.921875rem;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.page-menu .prev-button img,
+.page-menu .next-button img {
+  display: inline-block;
+  width: 100%;
+}
+.bird-wrap {
+  position: absolute;
+  width: 11.71875rem;
+  height: 5.859375rem;
+  top: 1.71875rem;
+  left: 1.640625rem;
+  padding-right: 1.171875rem;
+  padding-bottom: 1.171875rem;
+  z-index: 103;
+  pointer-events: none;
+}
+.bird-wrap .bird-animation {
+  position: relative;
+  width: 1.171875rem;
+  height: 1.171875rem;
+  z-index: 200;
+  opacity: 0.7;
+  pointer-events: auto;
+}
+@keyframes step0 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -58.59375rem;
+  }
+}
+@-webkit-keyframes step0 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -58.59375rem;
+  }
+}
+@-moz-keyframes step0 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -58.59375rem;
+  }
+}
+@-o-keyframes step0 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -58.59375rem;
+  }
+}
+@keyframes step1 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -56.25rem;
+  }
+}
+@-webkit-keyframes step1 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -56.25rem;
+  }
+}
+@-moz-keyframes step1 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -56.25rem;
+  }
+}
+@-o-keyframes step1 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -56.25rem;
+  }
+}
+@keyframes step2 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -57.421875rem;
+  }
+}
+@-webkit-keyframes step2 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -57.421875rem;
+  }
+}
+@-moz-keyframes step2 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -57.421875rem;
+  }
+}
+@-o-keyframes step2 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -57.421875rem;
+  }
+}
+@keyframes step3 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -58.59375rem;
+  }
+}
+@-webkit-keyframes step3 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -58.59375rem;
+  }
+}
+@-moz-keyframes step3 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -58.59375rem;
+  }
+}
+@-o-keyframes step3 {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -58.59375rem;
+  }
+}
+.bird-wrap .bird0 {
+  background-image: url(../images/commonImg/pdf-page/bird-ani-0.png);
+  background-size: auto 1.171875rem;
+  background-repeat: no-repeat;
+}
+.bird-wrap .bird0.active {
+  animation: step0 1.8s steps(50, start) both 1;
+  -webkit-animation: step0 1.8s steps(50, start) both 1;
+}
+.bird-wrap .bird1 {
+  background-image: url(../images/commonImg/pdf-page/bird-ani-1.png);
+  background-size: auto 1.171875rem;
+  background-repeat: no-repeat;
+}
+.bird-wrap .bird1.active {
+  animation: step1 1.8s steps(48, start) both 1;
+  -webkit-animation: step1 1.8s steps(48, start) both 1;
+}
+.bird-wrap .bird2 {
+  background-image: url(../images/commonImg/pdf-page/bird-ani-2.png);
+  background-size: auto 1.171875rem;
+  background-repeat: no-repeat;
+}
+.bird-wrap .bird2.active {
+  animation: step2 1.8s steps(49, start) both 1;
+  -webkit-animation: step2 1.8s steps(49, start) both 1;
+}
+.bird-wrap .bird3 {
+  background-image: url(../images/commonImg/pdf-page/bird-ani-3.png);
+  background-size: auto 1.171875rem;
+  background-repeat: no-repeat;
+}
+.bird-wrap .bird3.active {
+  animation: step3 1.8s steps(50, start) both 1;
+  -webkit-animation: step3 1.8s steps(50, start) both 1;
+}
+@keyframes fanyeNext {
+  0% {
+    transform: perspective(1500px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(1500px) rotateY(-90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1500px) rotateY(-180deg);
+    opacity: 0;
+  }
+}
+@keyframes fanyePrev {
+  0% {
+    transform: perspective(1500px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(1500px) rotateY(90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1500px) rotateY(180deg);
+    opacity: 0;
+  }
+}
