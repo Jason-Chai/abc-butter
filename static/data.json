@@ -1,0 +1,131 @@
+{
+	"code": 0,
+	"codeMsg":"成功",
+	"data":{
+		"Pages":[
+			{
+				"L1":{
+					"dir":[{
+						"title":"lesson1",
+						"list":[{
+							"name":"Warmp up",
+							"model": "warmp",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Introduction",
+							"model": "introduction",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Presentation",
+							"model": "presentation",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Playtime",
+							"model": "playtime",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Closure",
+							"model": "closure",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						}]
+					},{
+						"title":"lesson2",
+						"list":[{
+							"name":"Warmp up",
+							"model": "warmp",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Introduction",
+							"model": "introduction",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Presentation",
+							"model": "presentation",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Playtime",
+							"model": "playtime",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Closure",
+							"model": "closure",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						}]
+					}]
+				}
+			},{
+				"L2":{
+					"dir":[{
+						"title":"lesson1",
+						"list":[{
+							"name":"Warmp up",
+							"model": "warmp",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Introduction",
+							"model": "introduction",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Presentation",
+							"model": "presentation",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Playtime",
+							"model": "playtime",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						},{
+							"name":"Closure",
+							"model": "closure",
+							"icon":"",
+							"obj":{
+								"audioSrc":""
+							}
+						}]
+					}]
+				}
+			}
+		]
+	}
+}

@@ -162,7 +162,6 @@ html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form
   margin: 0 !important;
 }
 
-
 .video-js{
   background-color: transparent !important;
   margin-top:-.25rem;
@@ -182,229 +181,132 @@ html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form
 }
 
 
-
-
 .ivu-slider-wrap{
   width: 90% !important;
 }
-.c1_d1 .ivu-slider-bar,.c1_d1 .ivu-slider-wrap{
-  color: #ff7444;
-  background: #ff7444;
-  border-radius: 5px;
-}
-.c1_d1 .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.48rem;
-    height: 0.42rem;
-    position: absolute;
-    background: url('../images/silderbg3.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -0.1rem;
-    left: -0.2rem;
+
+
+/*card match menu*/
+
+/*绿色*/
+.cmM .ivu-slider-bar,
+.shM .ivu-slider-bar,
+.subM .ivu-slider-bar,
+.tioM .ivu-slider-bar,
+.ttcM .ivu-slider-bar,
+.comesM .ivu-slider-bar{
+  height: 0.24rem;
+  background:url('../images/commonImg/soundTop.png');
+  background-size: cover;
+  margin-top: 1px;
 }
 
-.c1_d2 .ivu-slider-bar,.c1_d2 .ivu-slider-wrap{
-  color: #05aaff;
-  background: #05aaff;
-  border-radius: 5px;
-}
-.c1_d2 .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.48rem;
-    height: 0.42rem;
-    position: absolute;
-    background: url('../images/silderbg3.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -14px;
-    left: -2px;
-}
-/*leadIn menu*/
-.leadInM .ivu-slider-button-wrap .ivu-tooltip {
-  display: none;
-}
-.leadInM .ivu-slider-bar,.leadInM .ivu-slider-wrap {
-  background-color:transparent;
-}
-
-.leadInM .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.66rem;
-    height: 0.42rem;
-    position: absolute;
-    background: url('../images/silderbg2.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -0.1rem;
-    left: -0.31rem;
-}
-/*Vocabulary menu*/
-.vM .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.48rem;
-    height: 0.42rem;
-    position: absolute;
-    background: url('../images/silderbg.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -0.1rem;
-    left: -2px;
-}
-/*Vocabulary menu new*/
-.vMN .ivu-slider-button-wrap::before{
-  content: "";
-  width: 0.54rem; /*70/128*/
-  height: 0.57rem;
-  position: absolute;
-  background: url('../images/silderbg12.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: 99;
-  top: -0.25rem;
-  left: -2px;
-}
-/* look,listen and choose*/
-.chooseM .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.67rem; 
-    height: 0.75rem;
-    position: absolute;
-    background: url('../images/silderbg3.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -0.36rem;
-    left: -15px;
-}
-/* true or fasle*/
-.torfM .ivu-slider-wrap {
-    width: 100% !important;
-}
-.torfM .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.515rem;
-    height: 0.414rem;
-    position: absolute;
-    background: url('../images/silderbg-torf.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -0.16rem;
-    left: 0.04rem;
-}
-/* let's sing */
-.singM .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.53rem;
-    height: 0.58rem;
-    position: absolute;
-    background: url('../images/silderbg4.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -0.25rem;
-    left: -15px;
-}
-
-/* Look listen and circle */
-.circleM .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.53rem;
-    height: 0.5rem;
-    position: absolute;
-    background: url('../images/silderbg5.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -0.25rem;
-    left: -15px;
-}
-.ivu-slider-button-wrap{
-    transform: none;
-}
-/* Look listen and number */
-.numberM .ivu-slider-button-wrap::before{
-    content: "";
-    width: 0.55rem;
-    height: 0.60rem;
-    position: absolute;
-    background: url('../images/silderbg-number.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 99;
-    top: -0.25rem;
-    left: -20px;
-}
-/* sentenceM */
-.sentenceM .ivu-slider-button-wrap::before{
-  content: "";
-  width: 0.53rem;
-  height: 0.38rem;
-  position: absolute;
-  background: url('../images/silderbg6.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: 99;
-  top: -0.1rem;
-  left: -15px;
-}
-/* sentenceMN  new */
-.sentenceMN .ivu-slider-button-wrap::before{
+.cmM .ivu-slider-button-wrap::before{
   content: "";
   width: 0.48rem;
-  height: 0.4rem;
+  height: 0.42rem;
   position: absolute;
-  background: url('../images/silderbg13.png');
+  background: url('../images/commonImg/sliderbg.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: 99;
-  top: -0.18rem;
-  left: -15px;
+  top: -0.1rem;
+  left: -0.2rem;
 }
 
-/* look listen and order */
-.orderM .ivu-slider-button-wrap::before{
+.shM .ivu-slider-button-wrap::before{
   content: "";
-  width: 0.38rem;
-  height: 0.38rem;
+  width: 0.43rem;
+  height: 0.52rem;
   position: absolute;
-  background: url('../images/silderbg8.png');
+  background: url('../images/commonImg/sliderbg2.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: 99;
   top: -0.1rem;
-  left: -15px;
+  left: -0.1rem;
 }
-/* look listen and order */
-.pictureM .ivu-slider-button-wrap::before{
+/*star Trip */
+/*黄色*/
+.stM .ivu-slider-bar,
+.soyTM .ivu-slider-bar{
+  height: 0.27rem;
+  background:url('../images/commonImg/soundTop2.png');
+  background-size: cover;
+}
+.stM .ivu-slider-button-wrap::before{
   content: "";
-  width: 0.37rem;
-  height: 0.4rem;
+  width: 0.46rem;
+  height: 0.52rem;
   position: absolute;
-  background: url('../images/silderbg7.png');
+  background: url('../images/commonImg/sliderbg3.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: 99;
   top: -0.1rem;
-  left: -15px;
+  left: -0.1rem;
 }
- /* listen and choose*/
-.listenchooseM .ivu-slider-button-wrap::before{
+.subM .ivu-slider-button-wrap::before{
   content: "";
-  width: 0.54rem;
+  width: 0.61rem;
   height: 0.53rem;
   position: absolute;
-  background: url('../images/silderbg11.png');
+  background: url('../images/commonImg/sliderbg4.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.1rem;
+  left: -0.1rem;
+}
+
+.tioM .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.47rem;
+  height: 0.61rem;
+  position: absolute;
+  background: url('../images/commonImg/sliderbg5.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: 99;
   top: -0.2rem;
-  left: -15px;
+  left: -0.1rem;
+}
+
+.ttcM .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.47rem;
+  height: 0.61rem;
+  position: absolute;
+  background: url('../images/commonImg/sliderbg6.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.2rem;
+  left: -0.1rem;
+}
+.soyTM .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.57rem;
+  height: 0.50rem;
+  position: absolute;
+  background: url('../images/commonImg/sliderbg7.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.1rem;
+  left: -0.1rem;
+}
+.comesM .ivu-slider-button-wrap::before{
+  content: "";
+  width: 0.51rem;
+  height: 0.42rem;
+  position: absolute;
+  background: url('../images/commonImg/sliderbg8.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  top: -0.1rem;
+  left: -0.1rem;
 }
 
 /* pdf menu */

@@ -123,27 +123,40 @@ export default {
   display: inline;
 }
 .ivu-slider-bar {
-  // color: #9dc7fe;
   height: 0.11rem;
 }
 .ivu-slider-bar{
   background: transparent;
 }
 .ivu-slider-wrap {
-  // height: 0.11rem;
+  width:100% !important;
+  height: 0.21rem;
+  color: #ffffff;
+  background: #ffffff;
   border-radius: 5px;
-  // margin: 0.16rem 0;
 }
-.ivu-slider-button {
-  width: 0.2rem;
-  height: 0.2rem;
-  border: 2px solid #ffffff;
+.ivu-slider-button{
+  width: 0 !important;
+  height: 0 !important;
+  border: none;
 }
-.ivu-slider-button-wrap {
-  width: 62/@rem;
-  height: 55/@rem;
-  top: -0.04rem;
+.ivu-slider-button-wrap{
+  top:0;
+  width: 0 !important;
+  height: 0 !important;
+  transform: translateX(-50%);
 }
+
+// .ivu-slider-button {
+//   width: 0.2rem;
+//   height: 0.2rem;
+//   border: 2px solid #ffffff;
+// }
+// .ivu-slider-button-wrap {
+//   width: 62/@rem;
+//   height: 55/@rem;
+//   top: -0.04rem;
+// }
 #app {
   position: relative;
 }

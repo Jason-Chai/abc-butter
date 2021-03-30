@@ -11,10 +11,10 @@
       </div>
     </div>
     <!-- {{currentPage}} / {{pageNum}} -->
-    <div class="page">
+    <!-- <div class="page">
         <div :class="this.currentPage == 1 ? 'noPre-page': 'pre-page'" @click="prePage"></div>
         <div :class="this.currentPage == this.pageNum ? 'noNext-page': 'next-page'" @click="nextPage"></div>
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -75,44 +75,44 @@
               imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-8.png'),
               titleText: '课程八'
             },
-            {
-              routerUrl: 'Course9',
-              imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-9.png'),
-              titleText: '课程九'
-            }, {
-              routerUrl: 'Course10',
-              imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-10.png'),
-              titleText: '课程十'
-            },
-            {
-              routerUrl: 'Course11',
-              imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-11.png'),
-              titleText: '课程十一'
-            },
-            {
-              routerUrl: 'Course12',
-              imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-12.png'),
-              titleText: '课程十二'
-            },
-            {
-              routerUrl: 'Course13',
-              imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-13.png'),
-              titleText: '课程十三'
-            },
-            {
-              routerUrl: 'Course14',
-              imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-14.png'),
-              titleText: '课程十四'
-            },
-            {
-              routerUrl: 'Course15',
-              imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-15.png'),
-              titleText: '课程十五'
-            }, {
-              routerUrl: 'Course16',
-              imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-16.png'),
-              titleText: '课程十六'
-            }
+            // {
+            //   routerUrl: 'Course9',
+            //   imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-9.png'),
+            //   titleText: '课程九'
+            // }, {
+            //   routerUrl: 'Course10',
+            //   imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-10.png'),
+            //   titleText: '课程十'
+            // },
+            // {
+            //   routerUrl: 'Course11',
+            //   imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-11.png'),
+            //   titleText: '课程十一'
+            // },
+            // {
+            //   routerUrl: 'Course12',
+            //   imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-12.png'),
+            //   titleText: '课程十二'
+            // },
+            // {
+            //   routerUrl: 'Course13',
+            //   imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-13.png'),
+            //   titleText: '课程十三'
+            // },
+            // {
+            //   routerUrl: 'Course14',
+            //   imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-14.png'),
+            //   titleText: '课程十四'
+            // },
+            // {
+            //   routerUrl: 'Course15',
+            //   imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-15.png'),
+            //   titleText: '课程十五'
+            // }, {
+            //   routerUrl: 'Course16',
+            //   imgUrl: require('../assets/images/commonImg/menuTwo/menu-img1-16.png'),
+            //   titleText: '课程十六'
+            // }
 
           ],
           listLevel2: [{

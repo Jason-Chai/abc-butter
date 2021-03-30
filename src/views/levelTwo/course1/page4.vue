@@ -1,245 +1,285 @@
 <template>
-  <div class="div-bg">
-    <div class="animate-bg" :class="{'animate-step':deerStep}" ref="deer" />
-    <div class="audio">
-      <VueAudio ref="audioss" :audioCurrentTime="playtime" :theUrl="audios.url" :theControlList="audios.controlList"
-        :titleCurr="4" :routerUrl="router" :menuList="menuList"></VueAudio>
-    </div>
-    <div class="page4-content">
-      <div class="content">
-        <div class="content-left">
-          <div class="each-pic pic-sentence" ref="sentenceMain" @click="beginMusicAndEnd('sentenceMain', 0)">
-            <img src="../../../assets/images/level1/course9/day3-p1-juzi.png">
-          </div>
-        </div>
-        <div class="content-right">
-          <div class="item item1" ref="sentence1" @click="beginMusicAndEnd('sentence1', 1)">
-            <span class="pic">
-              <img src="../../../assets/images/level1/course9/day3-p1-img1.png">
-            </span>
-            <span class="text" :style="{'display':showText1 ? 'block':'none'}">
-              <img src="../../../assets/images/level1/course9/day3-p1-img1-b.png">
-            </span>
-          </div>
-          <div class="item item2" ref="sentence2" @click="beginMusicAndEnd('sentence2', 2)">
-            <span class="pic">
-              <img src="../../../assets/images/level1/course9/day3-p1-img2.png">
-            </span>
-            <span class="text" :style="{'display':showText2 ? 'block':'none'}">
-              <img src="../../../assets/images/level1/course9/day3-p1-img2-b.png">
-            </span>
-          </div>
-          <div class="item item3" ref="sentence3" @click="beginMusicAndEnd('sentence3', 3)">
-            <span class="pic">
-              <img src="../../../assets/images/level1/course9/day3-p1-img3.png">
-            </span>
-            <span class="text" :style="{'display':showText3 ? 'block':'none'}">
-              <img src="../../../assets/images/level1/course9/day3-p1-img3-b.png">
-            </span>
-          </div>
-          <div class="item item4" ref="sentence4" @click="beginMusicAndEnd('sentence4', 4)">
-            <span class="pic">
-              <img src="../../../assets/images/level1/course9/day3-p1-img4.png">
-            </span>
-            <span class="text" :style="{'display':showText4 ? 'block':'none'}">
-              <img src="../../../assets/images/level1/course9/day3-p1-img4-b.png">
-            </span>
-          </div>
-          <div class="item item5" ref="sentence5" @click="beginMusicAndEnd('sentence5', 5)">
-            <span class="pic">
-              <img src="../../../assets/images/level1/course9/day3-p1-img5.png">
-            </span>
-            <span class="text" :style="{'display':showText5 ? 'block':'none'}">
-              <img src="../../../assets/images/level1/course9/day3-p1-img5-b.png">
-            </span>
-          </div>
-          <div class="item item6" ref="sentence6" @click="beginMusicAndEnd('sentence6', 6)">
-            <span class="pic">
-              <img src="../../../assets/images/level1/course9/day3-p1-img6.png">
-            </span>
-            <span class="text" :style="{'display':showText6 ? 'block':'none'}">
-              <img src="../../../assets/images/level1/course9/day3-p1-img6-b.png">
-            </span>
-          </div>
-          <div class="item item7" ref="sentence7" @click="beginMusicAndEnd('sentence7', 7)">
-            <span class="pic">
-              <img src="../../../assets/images/level1/course9/day3-p1-img7.png">
-            </span>
-            <span class="text" :style="{'display':showText7 ? 'block':'none'}">
-              <img src="../../../assets/images/level1/course9/day3-p1-img7-b.png">
-            </span>
-          </div>
+  <div class="a_page_2">
+    <div class="bg-div">
+      <!-- <div class="animate-bg" :class="{ 'animate-step': deerStep }" ref="deer"/> -->
+      <div class="audio">
+        <VueAudio
+          ref="audioss"
+          :audioCurrentTime="playtime"
+          :theUrl="audios.url"
+          :theControlList="audios.controlList"
+          :titleCurr="2"
+          :routerUrl="router"
+          :menuList="menuList"
+        ></VueAudio>
+      </div>
+      <div class="page4-content">
+         <div class="content">
+              <div class="contentBox">
+                  <div class="item-pic"><img src="../../../assets/images/commonImg/hat.png"/></div>
+                  <div class="item-list">
+                      <div class="each-pic">
+                          <span class="itemBg">h</span>
+                      </div>
+                      <div class="each-pic">
+                          <span class="itemBg"></span>
+                      </div>
+                      <div class="each-pic">
+                          <span class="itemBg">t</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="content-match-base">
+                    <div v-for="(item,index) in cardBaseList" :key="index" @click="beginMusicAndEnd(item,index,1)" class="each-pic">
+                        <span class="itemBg">{{item.name}}</span>
+                    </div>
+              </div>
+           </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 <script>
-  import VueAudio from "../../../components/sentenceMenu";
-  export default {
-    name: "",
-    components: {
-      VueAudio
+import VueAudio from "../../../components/submarineMenu";
+import draggable from 'vuedraggable';
+
+export default {
+  name: "try",
+  components: {
+    VueAudio,draggable
+  },
+  data() {
+    return {
+      isRolling: false,
+      value1: 50,
+      audios: {
+        url: "./static/mp3/level1/level1-01.mp3",
+        controlList: "noDownload noSpeed onlyOnePlaying",
+      },
+      rightAudios: "./static/mp3/music.mp3",
+      errorAudios: "./static/mp3/click.mp3",
+      playtime: {
+        time: 0.5,
+        randem: Math.random(1000),
+        stopTime: 2.4,
+      },
+      router: "course1page6",
+      menuList: [
+        //右侧菜单
+        {
+          routerUrl: "L1Course1Day1Page1",
+          imgSrc: require("../../../assets/images/commonImg/menu/theme-vocan-menu-voca.png"),
+        },
+        {
+          routerUrl: "L1Course1Day1Page2",
+          imgSrc: require("../../../assets/images/commonImg/menu/theme-vocan-menu-lookchoose.png"),
+        },
+        {
+          routerUrl: "index?id=L1Course1",
+          imgSrc: require("../../../assets/images/commonImg/menu/theme-vocan-menu-back.png"),
+        },
+      ],
+      first_Item: "", //首次翻转Index
+      oldRoll_Index: "",
+      drag: false,
+      cardBaseList:[{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img3.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          name: "a",
+          groupId:3,
+          isRolling:false,
+        },{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img1.png'),
+          beginTime:3,
+          endTime:1.5,
+          name: "b",
+          groupId:1,
+          isRolling:false,
+        },{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img2.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          name: "c",
+          groupId:2,
+          isRolling:false,
+        }
+      ],
+      cardList:[{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          name:"Ant",
+          groupId:2,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime:3,
+          endTime:1.5,
+          name:"Ant",
+          groupId:1,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          name:"bear",
+          groupId:3,
+          isRolling:false,
+        }],
+      flag: false,
+      timerList: [],
+      tempItem:{},
+      deerStep: true,
+      positionX:0,
+      positionY:0
+    };
+  },
+  watch:{
+
+  },
+  methods: {
+    onStart() {
+        // this.drag = true;
     },
-    data() {
-      return {
-        // 烟花
-        timer1: null,
-        step1: 0,
-        isSHow: "",
-        value1: 50,
-        audios: {
-          url: "./static/mp3/level1/level1-09.mp3",
-          controlList: "noDownload noSpeed onlyOnePlaying"
-        },
-        playtime: {
-          time: 126.2,
-          randem: Math.random(1000)
-        },
-        menuList: [
-          //右侧菜单
-          {
-            routerUrl: 'course1Page1',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-sent-menu-sent.png')
-          },
-          {
-            routerUrl: 'course1Page2',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-sent-menu-lookorder.png')
-          },
-          {
-            routerUrl: 'index',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-sent-menu-back.png')
-          }
-        ],
-        router: "course1Page5",
-        musicTimeList: {
-          sentenceMain: {
-            beginTime: 130,
-            endTime: 3.6
-          },
-          sentence1: {
-            beginTime: 146.2,
-            endTime: 2
-          },
-          sentence2: {
-            beginTime: 150.3,
-            endTime: 2.2
-          },
-          sentence3: {
-            beginTime: 154.4,
-            endTime: 2.2
-          },
-          sentence4: {
-            beginTime: 158,
-            endTime: 2.2
-          },
-          sentence5: {
-            beginTime: 162.4,
-            endTime: 2.2
-          },
-          sentence6: {
-            beginTime: 166.7,
-            endTime: 2.2
-          },
-          sentence7: {
-            beginTime: 174.8,
-            endTime: 2.2
-          }
-        },
-        flag: false,
-        timerList: [],
-        showText1: false,
-        showText2: false,
-        showText3: false,
-        showText4: false,
-        showText5: false,
-        showText6: false,
-        showText7: false,
-        deerStep: true
-      };
+    move({relatedContext, draggedContext}) {
+        console.log('move');
+        const relatedElement = relatedContext.element;
+        const draggedElement = draggedContext.element;
+        return (
+            (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
+        );
     },
-    mounted() {
+    onEnd(evt,originalEvent) {
+		    console.log(evt, "end");
+        var that = this;
+        var TzTagName = evt.item.id;
+	     	var TzIndex = TzTagName.substr(TzTagName.length-1, 1);
+        var oldIndex = evt.oldIndex;
+        that.isOldIndex = oldIndex;
+        if (evt.to.parentElement.className == "list-group") {
+       
+        }
+    },
+    beginMusicAndEnd(item, index) {
       let that = this;
-      that.flag = true;
-      let playTime = window.setTimeout(() => {
-        that.$refs.audioss.startPlay();
-        clearTimeout(playTime);
-      }, 10);
-      let stopTime = window.setTimeout(() => {
-        that.$refs.audioss.pausePlay();
-        clearTimeout(stopTime);
-      }, 1800);
-      that.$refs.deer.addEventListener("animationend", function() {
-        that.deerStep = false;
-        let deerTime = window.setTimeout(() => {
-          that.deerStep = true;
-          window.clearTimeout(deerTime);
-        }, 5000);
-      });
-    },
-    methods: {
-      move(evt, originalEvent) {
-        // console.log(evt, originalEvent.oldIndex);
-      },
-
-      beginMusicAndEnd(item, index) {
-        let that = this;
-        that.clearTimer();
-        // console.log("传入的数据：", index);
-        if (index != undefined) {
-          that.$refs[item].style.animation = "";
-          let tempTimer = window.setTimeout(() => {
-            that.$refs[item].style.animation = "fadeIn 1s 0s both";
-            window.clearTimeout(tempTimer);
-          }, 10);
-        }
-
-        this.playtime.randem = Math.random(1000);
-        this.playtime.time = this.musicTimeList[item].beginTime;
-        let stop = this.musicTimeList[item].endTime * 1000;
-        // this.$refs.audios.startPlay();
-        that.flag = true;
-        that.timerList[3] = window.setTimeout(() => {
-          that.$refs.audioss.pausePlay();
+      that.cardList[index].isRolling = true;
+      if (!!!that.first_Item) {
+        console.log("first");
+        that.first_Item = item;
+      } else {
+        console.log(that.first_Item);
+        if (item.groupId != that.first_Item.groupId) {
+          console.log("不匹配");
+          // that.audios.url = that.errorAudios;
           setTimeout(() => {
-            // 播完之后显示句子
-            if (index != 0) {
-              that["showText" + index] = true;
-            }
-          }, 500);
-          that.clearTimer();
-        }, stop);
-      },
-      clearTimer() {
-        for (let i = 0; i <= this.timerList.length; i++) {
-          window.clearTimeout(this.timerList[i]);
+            that.cardList[index].isRolling = false;
+          }, 1500);
+        } else {
+          console.log("匹配");
+          // that.audios.url = that.rightAudios;
+          that.first_Item = "";
         }
-        this.timerList.splice(0, this.timerList.length);
+      }
+
+      this.playtime.randem = Math.random(1000);
+      that.playtime.time = that.cardList[index].beginTime;
+      that.playtime.stopTime = that.cardList[index].endTime;
+
+      that.flag = true;
+      that.$refs.audioss.startPlay();
+    },
+    clearTimer() {
+      for (let i = 0; i <= this.timerList.length; i++) {
+        window.clearTimeout(this.timerList[i]);
+      }
+      this.timerList.splice(0, this.timerList.length);
+    },
+  },
+};
+</script>
+<style lang='less' scoped>
+@import "../../../assets/css/index";
+@import "../../../assets/css/submarine";
+@rem: 128rem;
+
+.a_page_2 {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  .content{
+    width: 1280/@rem !important;
+    margin-top: 134/@rem !important;
+    font-size: 56/@rem;
+     text-align: center;
+    .content-match-base{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: auto;
+      justify-content: space-around;
+      img{
+        display: inline-block;
+        width: 100%;
       }
     }
-  };
-</script>
-
-<style lang="less" scoped>
-  @import "../../../assets/css/index";
-  @import "../../../assets/css/sentence";
-  @rem: 128rem;
-
-  .content {
-      .content-left {
-        position: absolute;
-        left: -22 / @rem !important;
-        top: 12 / @rem;
-
-        .pic-sentence {
-          // 句子的宽度，每个课单独定
-          width: 406 / @rem;
-
-          img {
-            width: 100%;
-            display: block;
-          }
-        }
-      }
+    .content-match-base{
+      margin-top: 50/@rem;
+      color: #f5800c;
+    }
   }
+}
+.itemBg{
+    width: 131/@rem;
+    height: 131/@rem;
+    line-height: 131/@rem;
+    display: block;
+    background: url('../../../assets/images/commonImg/qian2.png') no-repeat;
+    background-size: cover;
+   
+}
+.contentBox{
+    position: relative;
+    font-size: 32/@rem;
+    text-align: center;
+    width: 1099/@rem;
+    height: 389/@rem;
+    background: url('../../../assets/images/commonImg/qian1.png');
+    background-size: cover;
+    margin: 0 auto;
+    color: #fff;
+    .item-pic{
+        margin-top: 110/@rem;
+        margin-left: 80/@rem;
+        width: 190/@rem;
+        height: 190/@rem;
+     }
+    .item-text{
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+    }
+    .item-img{
+        position: absolute;
+        bottom: 10/@rem;
+        left: 10/@rem;
+        width: 175/@rem;
+        height: 110/@rem;
+    }
+    .item-img2{
+        width: 175/@rem;
+        height: 189/@rem;
+    }
+    .item-list{
+      position: absolute;
+      left: 290/@rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      width: 570/@rem;
+      flex-direction: row;
+      justify-content: space-around;
+      color: #fff;
+    }
+}
 </style>

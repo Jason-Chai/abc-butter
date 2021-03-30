@@ -1,277 +1,335 @@
 <template>
-  <div class="main">
+<div class="a_page_2">
     <div class="bg-div">
-      <div class="animate-bg" :class="deerQuestion?{'animate-step':deerStep}:{'animate-award':deerStep}" ref="deer"
-        :style="deerQuestion?{backgroundImage:'url('+require('../../../assets/images/commonImg/deer.png')+')'}:{backgroundImage:'url('+require('../../../assets/images/commonImg/deer-good.png')+')'}"></div>
+      <!-- <div class="animate-bg" :class="{'animate-step':deerStep}" ref="deer"/> -->
       <div class="audio">
-        <VueAudio ref="audioss" :audioCurrentTime="playtime" :theUrl="audios.url" :theControlList="audios.controlList"
-          :titleCurr="3" :routerUrl="router" :menuList="menuList"></VueAudio>
+        <VueAudio
+          ref="audioss"
+          :audioCurrentTime="playtime"
+          :theUrl="audios.url"
+          :theControlList="audios.controlList"
+          :titleCurr="2"
+          :routerUrl="router"
+          :menuList="menuList"
+        ></VueAudio>
       </div>
       <div class="page2-content">
-        <div class="content" v-show="showQuestionItem===0">
-          <div ref="word1" class="each-pic pic1" @click="selectAnswer('word1',0)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img2.png" alt>
-          </div>
-          <div ref="word2" class="each-pic pic2" @click="selectAnswer('word2',0)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img1.png" alt>
-          </div>
-        </div>
-        <div class="content" v-show="showQuestionItem===1">
-          <div ref="word1" class="each-pic pic1" @click="selectAnswer('word1',1)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img3.png" alt>
-          </div>
-          <div ref="word2" class="each-pic pic2" @click="selectAnswer('word2',1)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img4.png" alt>
-          </div>
-        </div>
-        <div class="content" v-show="showQuestionItem===2">
-          <div ref="word1" class="each-pic pic1" @click="selectAnswer('word1',2)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img4.png" alt>
-          </div>
-          <div ref="word2" class="each-pic pic2" @click="selectAnswer('word2',2)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img5.png" alt>
-          </div>
-        </div>
-        <div class="content" v-show="showQuestionItem===3">
-          <div ref="word1" class="each-pic pic3" @click="selectAnswer('word1',3)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img1.png" alt>
-          </div>
-          <div ref="word2" class="each-pic pic4" @click="selectAnswer('word2',3)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img2.png" alt>
-          </div>
-        </div>
-        <div class="content" v-show="showQuestionItem===4">
-          <div ref="word1" class="each-pic pic3" @click="selectAnswer('word1',4)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img4.png" alt>
-          </div>
-          <div ref="word2" class="each-pic pic4" @click="selectAnswer('word2',4)">
-            <img src="../../../assets/images/level1/course9/day5-p2-img3.png" alt>
-          </div>
-        </div>
-        <div class="content-bottom">
-          <div class="button-next" ref="btn1" v-show="showQuestionItem===0" @click="beginMusicAndEnd('btn1')">
-            <img src="../../../assets/images/commonImg/c1.png">
-          </div>
-          <div class="button-next" ref="btn2" v-show="showQuestionItem===1" @click="beginMusicAndEnd('btn2')">
-            <img src="../../../assets/images/commonImg/c2.png">
-          </div>
-          <div class="button-next" ref="btn3" v-show="showQuestionItem===2" @click="beginMusicAndEnd('btn3')">
-            <img src="../../../assets/images/commonImg/c3.png">
-          </div>
-          <div class="button-next" ref="btn4" v-show="showQuestionItem===3" @click="beginMusicAndEnd('btn4')">
-            <img src="../../../assets/images/commonImg/c4.png">
-          </div>
-          <div class="button-next" ref="btn4" v-show="showQuestionItem===4" @click="beginMusicAndEnd('btn5')">
-            <img src="../../../assets/images/commonImg/c5.png">
-          </div>
+        <div class="content">
+             <div class="content-match-cardList" >
+               <div class="list-group" v-for="item in cardBaseList" :key="item.id"  >
+                    <div><img  :src="item.imgSrc" class="bgImg"/></div>
+                     <span class="item-btm"></span>
+                </div>
+              </div>
+              <div class="content-match-base">
+                  <div class="each-pic" v-for="item in arr" :key="item.id">
+                      <div><img :src="item.imgSrc"/></div>
+                      <span class="item-btm"></span>
+                  </div>
+              </div>
+             
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-  import VueAudio from "../../../components/listenChooseMenu";
-  export default {
-    name: "",
-    components: {
-      VueAudio
-    },
-    data() {
-      return {
-        // 烟花
-        timer1: null,
-        step1: 0,
-        isSHow: "",
-        value1: 50,
-        audios: {
-          url: "./static/mp3/level1/level1-09.mp3",
-          controlList: "noDownload noSpeed onlyOnePlaying"
-        },
-        menuList: [
-          //右侧菜单
-          {
-            routerUrl: 'course1Page1',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-lookchoose-menu-sent.png')
-          },
-          {
-            routerUrl: 'course1Page2',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-lookchoose-menu-lookchoose.png')
-          },
-          {
-            routerUrl: 'index',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-lookchoose-menu-back.png')
-          }
-        ],
-        playtime: {
-          time: 27.4,
-          randem: Math.random(1000)
-        },
-        router: "course1Page7",
-        musicTimeList: {
-          question: [{
-              lev: "btn1",
-              id: 1,
-              answer: "word2"
-            },
-            {
-              lev: "btn2",
-              id: 2,
-              answer: "word1"
-            },
-            {
-              lev: "btn3",
-              id: 3,
-              answer: "word2"
-            },
-            {
-              lev: "btn4",
-              id: 4,
-              answer: "word2"
-            },
-            {
-              lev: "btn5",
-              id: 5,
-              answer: "word1"
-            }
-          ],
-          btn1: {
-            beginTime: 376.5,
-            endTime: 2
-          },
-          btn2: {
-            beginTime: 381.4,
-            endTime: 2
-          },
-          btn3: {
-            beginTime: 386,
-            endTime: 2.3
-          },
-          btn4: {
-            beginTime: 396.4,
-            endTime: 2.3
-          },
-          btn5: {
-            beginTime: 401.6,
-            endTime: 2
-          },
-          right: {
-            beginTime: 412,
-            endTime: 1.8
-          },
-          wrong: {
-            beginTime: 414.5,
-            endTime: 2.5
-          },
-          over: {
-            beginTime: 418.8,
-            endTime: 4
-          }
-        },
-        flag: false,
-        timerList: [],
-        showQuestionItem: 0,
-        questionList: [{}],
-        currQusAns: "", // 当前问题的正确答案
-        deerStep: true,
-        deerQuestion: true
-      };
-    },
-    methods: {
-      beginMusicAndEnd(item) {
-        let that = this;
-        that.clearTimer();
+import draggable from 'vuedraggable'
+import VueAudio from "../../../components/comsNextMenu";
 
-        that[item + "MoreShow"] = true;
-        this.playtime.randem = Math.random(1000);
-        this.playtime.time = this.musicTimeList[item].beginTime;
-        let stop = this.musicTimeList[item].endTime * 1000;
-        // this.$refs.audios.startPlay();
-        that.flag = true;
-        that.timerList[3] = window.setTimeout(() => {
-          that.$refs.audioss.pausePlay();
-          that.clearTimer();
-        }, stop);
+export default{
+	name:'try',
+  components: {
+    VueAudio ,draggable
+  },
+	data(){
+		return{
+			isRolling:false,
+      value1: 50,
+      audios: {
+        url: "./static/mp3/level1/level1-01.mp3",
+        controlList: "noDownload noSpeed onlyOnePlaying"
       },
-      selectAnswer(item, index) {
-        // console.log(item, index);
-        // console.log(
-        //   "正确答案：=====" + this.musicTimeList["question"][index].answer
-        // );
-        let that = this;
-        let endtime = this.musicTimeList.right.endTime * 1000;
-        let lastendtime = this.musicTimeList.over.endTime * 1000;
-        var nextIndex = index + 1;
-        if (item == this.musicTimeList["question"][index].answer) {
-          if (nextIndex == this.musicTimeList["question"].length) {
-            //烟花
-            // setTimeout(function() {
-            //   that.isSHow = "isSHow";
-            //   that.timer1 = setInterval(that.yh, 60);
-            // }, lastendtime);
+      rightAudios:'./static/mp3/music.mp3',
+      errorAudios:'./static/mp3/click.mp3',
+      playtime: {
+        time: 0.5,
+        randem: Math.random(1000),
+        stopTime: 2.4
+      },
+      router: "index?id=L1Course1",
+      option1: {
+          filter: ".move",
+          scroll: false,
+          sortable: false
+      },
+      option2: {
+          group: "aaa",
+          filter: ".move",
+          scroll: false,
+          sortable: false
+      },
+      menuList:[//右侧菜单
+          {
+            routerUrl:'L1Course1Day1Page1',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-voca.png')
+          },
+          {
+            routerUrl:'L1Course1Day1Page2',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-lookchoose.png')
+          },
+          {
+            routerUrl:'index?id=L1Course1',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-back.png')
+          }
+      ],
+      first_Item:'',//首次翻转Index
+      oldRoll_Index:'',
+      arr1:[],
+      arr2:[],
+      arr3:[],
+      arr:[{
+          imgSrc:require('@/assets/images/commonImg/p10-img2.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          groupId:1,
+          name:'A',
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/p10-img2.png'),
+          beginTime:3,
+          endTime:1.5,
+          groupId:2,
+           name:'b',
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/p10-img2.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          groupId:2,
+           name:'B',
+          isRolling:false,
+        }],
+      cardBaseList:[{
+          imgSrc:require('@/assets/images/commonImg/p10-img2.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          groupId:3,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/p10-img2.png'),
+          beginTime:3,
+          endTime:1.5,
+          groupId:1,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/p10-img2.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          groupId:2,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/p10-img2.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          groupId:2,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/p10-img2.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          groupId:2,
+          isRolling:false,
+        }
+      ],
+      flag: false,
+      timerList: [],
+      deerStep: true,
+      drag: false
+		}
+	},
+  //  watch: {
+  //     cardList:{
+  //       handler:function(newVal,oldVal){
+  //         console.log(newVal)
+  //         this.cardList = newVal;
+  //       },
+  //       deep: true
+  //     },
+  //     cardBaseList:{
+  //       handler:function(newVal,oldVal){
+  //         console.log(newVal)
+  //         this.cardBaseList = newVal;
+  //       },
+  //       deep: true
+  //     }
+  // },
+  methods:{
+    onStart(){
+      console.log('start')
+        this.drag=true;
+    },
+    move({relatedContext, draggedContext}) {
+        console.log('move');
+        const relatedElement = relatedContext.element;
+        const draggedElement = draggedContext.element;
+        return (
+            (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
+        );
+    },
+      //拖拽结束事件
+    onEnd(evt) {
+        var that = this;
+        var TzTagName = evt.item.id;
+        var TzTag = TzTagName.substring(0, 1);
+        var oldIndex = evt.oldIndex;
+        this.isOldIndex = oldIndex;
+        if (evt.to.parentElement.className == "curBaseTr") {
+          if (evt.to.children[0].id == evt.item.id) {
+            this.beginMusicAndEnd("right");
+            this[evt.to.children[0].id] = true;
+            this.currentAnswer++;
+          } else {
+            this.beginMusicAndEnd("wrong");
+          }
+          if (this.currentAnswer >= this.answerCount) {
             that.deerQuestion = false;
             that.deerStep = true;
             this.beginMusicAndEnd("over");
-          } else {
-            setTimeout(function() {
-              that.showQuestionItem = nextIndex;
-            }, endtime);
-            this.beginMusicAndEnd("right");
           }
-        } else {
-          this.beginMusicAndEnd("wrong");
         }
-      },
-      clearTimer() {
-        for (let i = 0; i <= this.timerList.length; i++) {
-          window.clearTimeout(this.timerList[i]);
-        }
-        this.timerList.splice(0, this.timerList.length);
-      }
     },
-    mounted() {
+    beginMusicAndEnd(item,index){
       let that = this;
+      that.cardList[index].isRolling = true;
+      // if(!!!that.first_Item){
+      //   console.log('first')
+      //   that.first_Item = item;
+      // }else{
+      //     console.log(that.first_Item);
+      //     if(item.groupId !=that.first_Item.groupId){
+      //       console.log('不匹配')
+      //       // that.audios.url = that.errorAudios;
+      //       setTimeout(() => {
+      //           that.cardList[index].isRolling = false;
+      //       }, 1500);
+      //     }else{
+      //       console.log('匹配');
+      //       // that.audios.url = that.rightAudios;
+      //       that.first_Item = '';
+      //     }
+      // }
+   
+      this.playtime.randem = Math.random(1000);
+      that.playtime.time = that.cardList[index].beginTime; 
+      that.playtime.stopTime = that.cardList[index].endTime;
+     
       that.flag = true;
-      that.timerList[0] = window.setTimeout(() => {
-        that.$refs.audioss.startPlay();
-        clearTimeout(that.timerList[0]);
-        // that.clearTimer()
-      }, 100);
-      that.timerList[1] = window.setTimeout(() => {
-        that.$refs.audioss.pausePlay();
-        clearTimeout(that.timerList[1]);
-        // that.clearTimer()
-      }, 6700);
-      that.$refs.deer.addEventListener("animationend", function() {
-        if (that.deerQuestion) {
-          that.deerStep = false;
-          let deerTime = window.setTimeout(() => {
-            that.deerStep = true;
-            window.clearTimeout(deerTime);
-          }, 5000);
-        }
-      });
+      that.$refs.audioss.startPlay();
+    },
+    clearTimer() {
+      for (let i = 0; i <= this.timerList.length; i++) {
+        window.clearTimeout(this.timerList[i]);
+      }
+      this.timerList.splice(0, this.timerList.length);
     }
-  };
+  },
+  mounted(){
+    // console.log('mounted');
+    var that = this;
+    // that.cardList.sort(function () { 
+    //   return Math.random() - 0.5; 
+    // }); 
+    // that.cardBaseList.sort(function () { 
+    //   return Math.random() - 0.5; 
+    // }); 
+
+    // console.log(that.cardList);
+    // console.log(that.cardBaseList);
+  },
+}
 </script>
 
+<style lang='less'>
+@import "../../../assets/css/index";
+@import "../../../assets/css/comesNext";
+@rem: 128rem;
 
-<style lang="less" scoped>
-  @import "../../../assets/css/index";
-  @import "../../../assets/css/listenChoose";
-  @rem: 128rem;
-
-  .page2-content {
-    .each-pic {
-      // 两个大小
-      width: 434 / @rem;
-      height: 453 / @rem;
-      // 四个大小
-      //   width: 315 / @rem;
-      //   height: 329 / @rem;
-      img {
-        display: inline-block;
-      }
+img{
+  display: inline-block;
+  width: 100%;
+}
+.a_page_2 {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  .content{
+    position: relative;
+    width: 1090/@rem !important;
+    margin: 0 auto;
+    .content-match-cardList,.content-match-base{
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+    .content-match-cardList{
+        .scale(1120, 200);
+        .pos-a(235, 0, 3);
+        
+        .list-group{
+            width: 172/@rem;
+            height: 155/@rem;
+            position: relative;
+            width: 162/@rem;
+            height: 220/@rem;
+            div{
+              position: absolute;
+              bottom: 20/@rem;
+              left: 20/@rem;
+              width: 124/@rem;
+              height: 124/@rem;
+            }
+            .item-btm{
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              display: inline-block;
+              background: url('../../../assets/images/commonImg/p10-img1.png');
+              background-size: cover;
+              width: 164/@rem;
+              height: 121/@rem;
+            }
+        }
+        // .list-other{
+        //   width: 284/@rem;
+        //   height: 182/@rem;
+        // }
+    }
+    .content-match-base{
+        .scale(1120, 200);
+        .pos-a(588, 0, 3);
+        .each-pic{
+            position: relative;
+            width: 162/@rem;
+            height: 220/@rem;
+            div{
+              margin: 0 auto;
+              width: 124/@rem;
+              height: 124/@rem;
+            }
+            .item-btm{
+              position: absolute;
+              bottom: 2/@rem;
+              left: 0;
+              display: inline-block;
+              background: url('../../../assets/images/commonImg/p10-img3.png');
+              background-size: cover;
+              width: 159/@rem;
+              height: 92/@rem;
+            }
+        }
     }
   }
+}
 </style>
+

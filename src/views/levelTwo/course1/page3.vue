@@ -1,212 +1,357 @@
 <template>
-  <div class="main">
+<div class="a_page_2">
     <div class="bg-div">
-      <div class="animate-bg" :class="{'animate-step':deerStep}" ref="deer" />
-      <div class="mb-box">
-        <div class="canvas">
-          <div class="canvasMain">
-            <iframe :src="iframeUrl"></iframe>
-          </div>
-          <img src="../../../assets/images/level1/course9/day2-p3-img1.png" alt>
-        </div>
-        <div class="audio">
-          <VueAudio ref="audioss" :audioCurrentTime="playtime" :theUrl="audios.url" :theControlList="audios.controlList"
-            :routerUrl="router" :menuList="menuList" :titleCurr="3" />
-        </div>
-        <div class="page3-content">
-          <div class="content">
-            <div ref="right1" @click="beginMusicAndEnd('right1', 1)" class="each-pic pic1">
-              <img src="../../../assets/images/commonImg/circle1.png" alt>
-            </div>
-            <div ref="right2" @click="beginMusicAndEnd('right2', 2)" class="each-pic pic2">
-              <img src="../../../assets/images/commonImg/circle2.png" alt>
-            </div>
-            <div ref="right3" @click="beginMusicAndEnd('right3', 3)" class="each-pic pic3">
-              <img src="../../../assets/images/commonImg/circle3.png" alt>
-            </div>
-            <div ref="right4" @click="beginMusicAndEnd('right4', 4)" class="each-pic pic4">
-              <img src="../../../assets/images/commonImg/circle4.png" alt>
-            </div>
-            <div ref="right5" @click="beginMusicAndEnd('right5', 5)" class="each-pic pic5">
-              <img src="../../../assets/images/commonImg/circle5.png" alt>
-            </div>
-            <div ref="right6" @click="beginMusicAndEnd('right6', 6)" class="each-pic pic6">
-              <img src="../../../assets/images/commonImg/circle6.png" alt>
-            </div>
-          </div>
+      <!-- <div class="animate-bg" :class="{'animate-step':deerStep}" ref="deer"/> -->
+      <div class="audio">
+        <VueAudio
+          ref="audioss"
+          :audioCurrentTime="playtime"
+          :theUrl="audios.url"
+          :theControlList="audios.controlList"
+          :titleCurr="2"
+          :routerUrl="router"
+          :menuList="menuList"
+        ></VueAudio>
+      </div>
+      <div class="page2-content">
+        <div class="content">
+              <div class="content-match-base">
+                   <div class="list-group" id="groupId1">
+                      <img  src="../../../assets/images/commonImg/h1.png" class="bgImg"/>
+                      <draggable :group='{name:"group1",put:true}' class="dragList" :list="arr1" :sort="true">
+                            <span class="each-pic item" v-for="item in arr1" :key="item.id">{{item.name}}</span>
+                      </draggable>
+                  </div>
+                   <div class="list-group" id="groupId2">
+                      <img  src="../../../assets/images/commonImg/h2.png" class="bgImg"/>
+                       <draggable :group='{name:"group2",put:true}'  class="dragList" :list="arr2" >
+                            <span class="each-pic item" v-for="item in arr2" :key="item.id">{{item.name}}</span>
+                      </draggable>
+                  </div>
+                  <div class="list-group" id="groupId3">
+                      <img  src="../../../assets/images/commonImg/h3.png" class="bgImg"/>
+                       <draggable :group='{name:"group3",put:true}'  class="dragList" :list="arr3" >
+                            <span class="each-pic item" v-for="item in arr3" :key="item.id">{{item.name}}</span>
+                      </draggable>
+                  </div>
+               </div>
+                <draggable class="content-match-cardList" :list="arr" :group="{name:'groupId',pull:pullFunction,put:false}" :clone="clone" :move="move" @end="onEnd">
+                    <div class="each-pic move" v-for="(item,index) in arr" :key="index" :id="'answer'+index">
+                        <img :src="item.imgSrc"/>
+                    </div>
+                </draggable>
+                <!-- <draggable v-for="item in arr" :key="item.id" :list="arr" class="each-pic"  
+                    :option="{group:'group'+item.groupId}" :move="move" @end="onEnd">
+                  <transition-group>
+                  <div class="move" :key="'answer'+item.id" :id="'answer'+item.id">
+                      <img :src="item.imgSrc"/>
+                  </div>
+                  </transition-group>
+                </draggable> -->
         </div>
       </div>
-      <!-- <div class="xiong">
-        <img src="../../../assets/images/xiong/B/p4.png" alt />
-      </div>-->
     </div>
   </div>
 </template>
-
 <script>
-  import VueAudio from "../../../components/lookCircleMenu";
-  export default {
-    name: "",
-    components: {
-      VueAudio
-    },
-    data() {
-      return {
-        iframeUrl: "",
-        //视频隐藏
-        isShowVideo: "isShowVideo",
-        audios: {
-          url: "./static/mp3/level1/level1-09.mp3",
-          controlList: "noDownload noSpeed onlyOnePlaying"
-        },
-        menuList: [
-          //右侧菜单
+import draggable from 'vuedraggable'
+import VueAudio from "../../../components/starTripMenu";
+
+export default{
+	name:'try',
+  components: {
+    VueAudio ,draggable
+  },
+	data(){
+		return{
+			isRolling:false,
+      value1: 50,
+      audios: {
+        url: "./static/mp3/level1/level1-01.mp3",
+        controlList: "noDownload noSpeed onlyOnePlaying"
+      },
+      rightAudios:'./static/mp3/music.mp3',
+      errorAudios:'./static/mp3/click.mp3',
+      playtime: {
+        time: 0.5,
+        randem: Math.random(1000),
+        stopTime: 2.4
+      },
+      router: "course1page4",
+      option1: {
+          filter: ".move",
+          scroll: false,
+          sortable: false
+      },
+      option2: {
+          group: "aaa",
+          filter: ".move",
+          scroll: false,
+          sortable: false
+      },
+      menuList:[//右侧菜单
           {
-            routerUrl: 'course1Page1',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-lookcircle-menu-sing.png')
+            routerUrl:'L1Course1Day1Page1',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-voca.png')
           },
           {
-            routerUrl: 'course1Page2',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-lookcircle-menu-voca.png')
+            routerUrl:'L1Course1Day1Page2',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-lookchoose.png')
           },
           {
-            routerUrl: 'course1Page3',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-lookcircle-menu-lookcircle.png')
-          },
-          {
-            routerUrl: 'index',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-lookcircle-menu-back.png')
-          },
-        ],
-        playtime: {
-          time: 87,
-          randem: Math.random(1000)
-        },
-        router: "/course1Page4",
-        musicTimeList: {
-          right1: {
-            beginTime: 91.2,
-            endTime: 3
-          },
-          right2: {
-            beginTime: 96.5,
-            endTime: 3
-          },
-          right3: {
-            beginTime: 102.4,
-            endTime: 3
-          },
-          right4: {
-            beginTime: 108.2,
-            endTime: 3
-          },
-          right5: {
-            beginTime: 114,
-            endTime: 3
-          },
-          right6: {
-            beginTime: 119.8,
-            endTime: 3
+            routerUrl:'index?id=L1Course1',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-back.png')
           }
-        },
-        timerList: [],
-        deerStep: true
-      };
+      ],
+      first_Item:'',//首次翻转Index
+      oldRoll_Index:'',
+      arr1:[],
+      arr2:[],
+      arr3:[],
+      arr:[{
+          imgSrc:require('@/assets/images/commonImg/h4.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          groupId:1,
+          name:'A',
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/h5.png'),
+          beginTime:3,
+          endTime:1.5,
+          groupId:2,
+           name:'b',
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/h5.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          groupId:2,
+           name:'B',
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/h4.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          groupId:1,
+          name:'a',
+          isRolling:false,
+      },{
+          imgSrc:require('@/assets/images/commonImg/h6.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          groupId:3,
+          name:'C',
+          isRolling:false,
+      },{
+          imgSrc:require('@/assets/images/commonImg/h6.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          groupId:3,
+          name:'c',
+          isRolling:false,
+      }],
+      cardBaseList:[{
+          id:1,
+          imgSrc:require('@/assets/images/commonImg/h1.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          groupId:1,
+          isRolling:false,
+        },{
+          id:2,
+          imgSrc:require('@/assets/images/commonImg/h2.png'),
+          beginTime:3,
+          endTime:1.5,
+          groupId:2,
+          isRolling:false,
+        },{
+          id:3,
+          imgSrc:require('@/assets/images/commonImg/h3.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          groupId:3,
+          isRolling:false,
+        }
+      ],
+      flag: false,
+      timerList: [],
+      deerStep: true,
+      drag: false
+		}
+	},
+  methods:{
+    clone(el){
+        console.log(el);
+        return {
+          name: el.name
+        }
     },
-    mounted() {
-      if (this.IsPC()) {
-        this.iframeUrl = "./static/draw/index.html";
-      } else {
-        this.iframeUrl = "./static/draw/index_mobile.html";
+    pullFunction(el){
+      console.log(el)
+        return Math.random()*10%2 ? "clone" : true;
+    },
+    onStart(){
+      console.log('start')
+        this.drag=true;
+    },
+    move({relatedContext, draggedContext}) {
+        console.log('move');
+        const relatedElement = relatedContext.element;
+        const draggedElement = draggedContext.element;
+        return (
+            (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
+        );
+    },
+    changeItem (evt) {
+      console.log(evt, 'change')
+      // 拖动添加的时候，初始化选中index,和选中的item值
+      if (evt && evt.added) {
+        this.activeTab = 'tagTab'
+        // 设置编辑框里元素的编号，每次拖动一个编号加一
+        console.log(this.sceneEditor.length, 'length')
+        this.putAcitveIndex = evt.added.newIndex
+        // 深拷贝一行数据，如果不这样的话，会影响节点列表中的json数据格式
+        this.inputItemObj = JSON.parse(JSON.stringify(evt.added.element))
       }
+      // 拖动排序的时候，修改index，和选中的item值
+      if (evt && evt.moved) {
+        this.activeTab = 'tagTab'
+        this.putAcitveIndex = evt.moved.newIndex
+        this.inputItemObj = JSON.parse(JSON.stringify(evt.moved.element))
+      }
+    },
+      //拖拽结束事件
+    onEnd(evt) {
+        var that = this;
+        var TzTagName = evt.item.id;
+        var TzTag = TzTagName.substring(0, 1);
+        var oldIndex = evt.oldIndex;
+        this.isOldIndex = oldIndex;
+        if (evt.to.parentElement.className == "curBaseTr") {
+          if (evt.to.children[0].id == evt.item.id) {
+            this.beginMusicAndEnd("right");
+            this[evt.to.children[0].id] = true;
+            this.currentAnswer++;
+          } else {
+            this.beginMusicAndEnd("wrong");
+          }
+          if (this.currentAnswer >= this.answerCount) {
+            that.deerQuestion = false;
+            that.deerStep = true;
+            this.beginMusicAndEnd("over");
+          }
+        }
+    },
+    beginMusicAndEnd(item,index){
       let that = this;
-      let playTime = window.setTimeout(() => {
-        that.$refs.audioss.startPlay();
-        clearTimeout(playTime);
-      }, 10);
-      let stopTime = window.setTimeout(() => {
-        that.$refs.audioss.pausePlay();
-        clearTimeout(stopTime);
-      }, 3200);
-      that.$refs.deer.addEventListener("animationend", function() {
-        that.deerStep = false;
-        let deerTime = window.setTimeout(() => {
-          that.deerStep = true;
-          window.clearTimeout(deerTime);
-        }, 5000);
-      });
+      that.cardList[index].isRolling = true;
+      // if(!!!that.first_Item){
+      //   console.log('first')
+      //   that.first_Item = item;
+      // }else{
+      //     console.log(that.first_Item);
+      //     if(item.groupId !=that.first_Item.groupId){
+      //       console.log('不匹配')
+      //       // that.audios.url = that.errorAudios;
+      //       setTimeout(() => {
+      //           that.cardList[index].isRolling = false;
+      //       }, 1500);
+      //     }else{
+      //       console.log('匹配');
+      //       // that.audios.url = that.rightAudios;
+      //       that.first_Item = '';
+      //     }
+      // }
+   
+      this.playtime.randem = Math.random(1000);
+      that.playtime.time = that.cardList[index].beginTime; 
+      that.playtime.stopTime = that.cardList[index].endTime;
+     
+      that.flag = true;
+      that.$refs.audioss.startPlay();
     },
-    methods: {
-      beginMusicAndEnd(item, index) {
-        let that = this;
-        that.clearTimer();
-
-        // console.log("传入的数据：", index);
-        that[item + "MoreShow"] = true;
-        if (index != undefined) {
-          that.$refs["right" + index].style.animation = "";
-          let tempTimer = window.setTimeout(() => {
-            that.$refs["right" + index].style.animation = "fadeIn 1s 0s both";
-            window.clearTimeout(tempTimer);
-          }, 10);
-
-          // that.$refs["right" + index].style.opacity = "1";
-        }
-        this.playtime.randem = Math.random(1000);
-        this.playtime.time = this.musicTimeList[item].beginTime;
-        let stop = this.musicTimeList[item].endTime * 1000;
-        // this.$refs.audios.startPlay();
-        that.flag = true;
-        that.timerList[3] = window.setTimeout(() => {
-          that.$refs.audioss.pausePlay();
-          that.clearTimer();
-        }, stop);
-      },
-      clearTimer() {
-        for (let i = 0; i <= this.timerList.length; i++) {
-          window.clearTimeout(this.timerList[i]);
-        }
-        this.timerList.splice(0, this.timerList.length);
-      },
-      //开始播放
-      onPlayerPlay(a) {
-        this.playtime.randem = Math.random(1000);
-        this.playtime.time = "176.494";
-        this.$refs.audioss.startPlay();
-        let stopTT = window.setTimeout(() => {
-          this.$refs.audioss.pausePlay();
-          clearTimeout(stopTT);
-        }, 18730);
-      },
-      onPlayerEnded(a) {
-        this.isShowVideo = "isShowVideo1";
-      },
-      IsPC() {
-        var userAgentInfo = navigator.userAgent;
-        var Agents = [
-          "Android",
-          "iPhone",
-          "SymbianOS",
-          "Windows Phone",
-          "iPad",
-          "iPod"
-        ];
-        var flag = true;
-        for (var v = 0; v < Agents.length; v++) {
-          if (userAgentInfo.indexOf(Agents[v]) > 0) {
-            flag = false;
-            break;
-          }
-        }
-        return flag;
+    clearTimer() {
+      for (let i = 0; i <= this.timerList.length; i++) {
+        window.clearTimeout(this.timerList[i]);
       }
+      this.timerList.splice(0, this.timerList.length);
     }
-  };
+  },
+  mounted(){
+    // console.log('mounted');
+    var that = this;
+    // that.cardList.sort(function () { 
+    //   return Math.random() - 0.5; 
+    // }); 
+    // that.cardBaseList.sort(function () { 
+    //   return Math.random() - 0.5; 
+    // }); 
+
+    // console.log(that.cardList);
+    // console.log(that.cardBaseList);
+  },
+}
 </script>
 
-<style lang="less" scoped>
-  @import "../../../assets/css/index";
-  @import "../../../assets/css/listenCircle";
-  @rem: 128rem;
-  
+<style lang='less'>
+@import "../../../assets/css/index";
+@import "../../../assets/css/starTrip";
+@rem: 128rem;
+
+.a_page_2 {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  .content{
+    width: 1080/@rem !important;
+    div{
+      width: 100%;
+    }
+    .content-match-base,.content-match-cardList{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 216/@rem;
+      color: #fff;
+      justify-content: space-around;
+      .list-group{
+          width: 216/@rem !important;
+          position: relative;
+          .dragList{
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+      }
+      img{
+        display: inline-block;
+        width: 100%;
+      }
+      .content-match-base{
+          position: relative;
+          .bgImg{
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            left: 0;
+            border: 1px solid red;
+          }
+      }
+    }
+    
+    .content-match-cardList{
+      margin-top: 110/@rem;
+      .each-pic{
+        display: inline-block;
+         width: 150/@rem !important;
+         height: 145/@rem;
+      }
+    }
+  }
+}
 </style>
+

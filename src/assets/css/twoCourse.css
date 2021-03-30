@@ -3,7 +3,7 @@
   width: 0.97rem;
   height: 0.87rem;
   position: absolute;
-  background: url(../images/levelTwoCommonImg/silderbg.png);
+  background: url("../images/commonImg/silderbg.png");
   /* background-position: -30px -24px; */
   background-size: 100% 100%;
   background-repeat: no-repeat;

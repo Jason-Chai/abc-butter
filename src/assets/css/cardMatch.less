@@ -1,0 +1,151 @@
+@charset "utf-8";
+@rem: 128rem;
+@import "index";
+
+.bg-div {
+  width: 1920/@rem;
+  height: 1080/@rem;
+  background: url("../images/commonImg/pagebg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.animate-bg {
+  .scale(600, 600);
+  .pos-a(526, -100, 3);
+  background: url("../images/commonImg/anibg15-ani.png")
+    no-repeat;
+  background-size: auto 600 / @rem;
+  pointer-events: none;
+}
+.animate-step {
+  animation: step 3s steps(50) 1;
+  -webkit-animation: step 3s steps(50) 1;
+}
+
+.ani-bg{
+  .scale(401, 613);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  // .pos-a(526, -100, 3);
+}
+
+.page1-content {
+  .scale(1424, 864);
+  .pos-a(143, 232, 3);
+  position: absolute;
+
+  background: url("../images/commonImg/photoKuang.png") no-repeat center center;
+  background-size: 100% 100%;
+}
+
+
+.content {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: justify;
+  flex-direction: row;
+  width: 1320 / @rem;
+  margin: 170 / @rem auto 0;
+
+  .each-pic {
+    width: 188 / @rem;
+    height: 266 / @rem;
+
+    img {
+      display: inline-block;
+    }
+  }
+}
+
+/**翻转样式**/
+.rollbox{
+  position: relative;
+  // transform-style: preserve-3d;
+  // transition: transform  ease-in 1.5s;
+  .rollbox_front,.rollbox_behind{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 99;
+      transform-style: preserve-3d; //表示所有子元素在3D空间中呈现
+      backface-visibility: hidden;  //元素背面向屏幕时是否可见
+      transition-duration:1.5s;
+      // transform-style: 0 50%;
+      transition-timing-function:'ease-in';
+  }
+  .rollbox_front{
+      z-index: 100;
+  }
+}
+.box_rolling{
+    .rollbox_front{
+      transform: rotateY(180deg);
+      visibility:hidden;
+      z-index: 100;
+    }
+    .rollbox_behind{
+      transform: rotateY(360deg);
+      visibility:visible;
+    }
+}
+
+ img {
+    display: block;
+    width: 100%;
+    height: auto;
+ }  
+ .audio {
+    width: 100%;
+    height: 0.31rem;
+    margin-bottom: 0.1rem;
+  }
+
+  @keyframes step {
+    0% {
+      background-position: 0 0;
+    }
+  
+    100% {
+      background-position: -(25000/500*600) / @rem 0;
+    }
+  }
+  
+  @-webkit-keyframes step {
+    0% {
+      background-position: 0 0;
+    }
+  
+    100% {
+      background-position: -(25000/500*600) / @rem 0;
+    }
+  }
+
+  @keyframes fanyeNext{
+    0% {
+      transform: perspective(1500px) rotateY(0deg);
+    }
+    50% {
+      transform: perspective(1500px) rotateY(-90deg); opacity: 1;
+    }
+    100% {
+      transform: perspective(1500px) rotateY(-180deg); opacity: 0;
+    }
+  }
+
+  @keyframes fanyeNext{
+    0% {
+      transform: perspective(1500px) rotateY(0deg);
+    }
+    50% {
+      transform: perspective(1500px) rotateY(-90deg); opacity: 1;
+    }
+    100% {
+      transform: perspective(1500px) rotateY(-180deg); opacity: 0;
+    }
+  }

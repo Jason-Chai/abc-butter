@@ -14,11 +14,6 @@
         </div>
       </div>
     </div>
-    <!-- <audio id="stratMusic2" preload="auto" loop hidden="true" height="100" width="100">
-      <source :src="bgmusic" type="audio/mpeg" />
-      <source :src="bgmusic" type="audio/ogg" />
-      <embed height="50" width="100" :src="bgmusic" />
-    </audio> -->
 
   </div>
 </template>
@@ -36,31 +31,36 @@
             routerUrl: "day1",
             type: 'router',
             imgUrl: require("../assets/images/commonImg/menu/icon-day1.png"),
-            className: "icon-day1"
+            className: "icon-day1",
+            model:'Warmp',//1:Warmp up; 2:Introduction; 3:Presentation;4:Playtime;5:Closure
           },
           {
             routerUrl: "day2",
             type: 'router',
             imgUrl: require("../assets/images/commonImg/menu/icon-day2.png"),
-            className: "icon-day2"
+            className: "icon-day2",
+             model:'Introduction'
           },
           {
             routerUrl: "day3",
             type: 'router',
             imgUrl: require("../assets/images/commonImg/menu/icon-day3.png"),
-            className: "icon-day3"
+            className: "icon-day3",
+             model:'Presentation'
           },
           {
             routerUrl: "day4",
             type: 'router',
             imgUrl: require("../assets/images/commonImg/menu/icon-day4.png"),
-            className: "icon-day4"
+            className: "icon-day4",
+             model:'Playtime'
           },
           {
             routerUrl: "day5",
             type: 'router',
             imgUrl: require("../assets/images/commonImg/menu/icon-day5.png"),
-            className: "icon-day5"
+            className: "icon-day5",
+            model: 'Closure'            
           }, {
             routerUrl: "bookPdf",
             type: 'router',

@@ -1,313 +1,389 @@
 <template>
-  <div class="level2-main">
-    <img :class="isSHow" style="z-index: 9999999;position:absolute;top:50%;left:-100%;transform:translate(-50%,-50%);width:100%;"
-      :src="curImg1">
-    <div class="animate-bg" :class="{'animate-step':isPause}" ref="deer" />
-    <div class="div-bg">
+<div class="a_page_2">
+    <div class="bg-div">
+      <!-- <div class="animate-bg" :class="{'animate-step':deerStep}" ref="deer"/> -->
       <div class="audio">
-        <VueAudio ref="audioss" :audioCurrentTime="playtime" :theUrl="audios.url" :theControlList="audios.controlList"
-          :titleCurr="1" :routerUrl="router" :menuList="menuList"></VueAudio>
+        <VueAudio
+          ref="audioss"
+          :audioCurrentTime="playtime"
+          :theUrl="audios.url"
+          :theControlList="audios.controlList"
+          :titleCurr="2"
+          :routerUrl="router"
+          :menuList="menuList"
+        ></VueAudio>
       </div>
-
       <div class="page2-content">
         <div class="content">
-          <span class="item item1" ref="text1"></span>
-          <span class="item item2" :class="{active:activeIndex==0}" ref="text2"></span>
-          <span class="item item3" :class="{active:activeIndex==1}" ref="text3"></span>
-          <span class="item item4" :class="{active:activeIndex==2}" ref="text4"></span>
-          <span class="item item5" :class="{active:activeIndex==3}" ref="text5"></span>
-          <span class="item item6" :class="{active:activeIndex==4}" ref="text6"></span>
-          <div class="pause" @click="pauseItem" v-show="isPause"><img src="../../../assets/images/commonImg/sing-pause.png" alt=""></div>
-        </div>
-        <div class="content-right">
-          <span class="page5Play" @click="beginMusicAndEnd('play',0)"></span>
-          <span class="page5Play" @click="beginMusicAndEnd('play',1)"></span>
-          <span class="page5Play" @click="beginVideo"></span>
-        </div>
-        <div class="content-video" v-if="isShowVideo">
-          <video-player class="video-player" ref="videoPlayer" :playsinline="true" :options="playerOptions"></video-player>
-          <div class="close" @click="isShowVideo=false">x</div>
+              <div class="content-match-base">
+                    <div v-for="(item,index) in cardBaseList" :key="index" @click="beginMusicAndEnd(item,index,1)" class="each-pic">
+                        <span class="itemBg">{{item.name}}</span>
+                    </div>
+              </div>
+              <div class="content-match-cardList">
+                  <div class="contentbox each-pic" v-for="(item,index) in cardList" :key="index"  @click="beginMusicAndEnd(item,index,2)">
+                      <div v-if="!item.isRolling">
+                          <span class="item-text">{{item.name}}</span>
+                          <div class="item-img" >
+                              <img src="../../../assets/images/commonImg/beike.png"/>
+                          </div>
+                      </div>
+                        <div class="item-img item-img2" v-if="item.isRolling">
+                            <img :src="item.imgSrc" alt>
+                        </div>
+                    </div>
+              </div>
         </div>
       </div>
-      <!-- <div class="page5-left">
-        <div @click="beginMusicAndEnd('play')" class="page5Play"></div>
-      </div>-->
     </div>
   </div>
 </template>
 <script>
-  // import VueAudio from "./VueAudio";
-  import VueAudio from "../../../components/letSingMenu";
-  import vuedraggable from "vuedraggable";
-  import {
-    videoPlayer
-  } from "vue-video-player";
+import VueAudio from "../../../components/shellHuntMenu";
 
-  export default {
-    name: "",
-    components: {
-      VueAudio,
-      vuedraggable,
-      videoPlayer
-    },
-    data() {
-      return {
-        timer1: null,
-        step1: 0,
-        isSHow: "",
-        curImg1: "./static/images/a/a_00000.png",
-        value1: 50,
-        audiosMusicUrlDefault: "./static/mp3/level1/level1-09.mp3",
-        audios: {
-          url: "./static/mp3/level1/level1-09.mp3",
-          controlList: "noDownload noSpeed onlyOnePlaying"
-        },
-        menuList: [ //右侧菜单
-          {
-            routerUrl: 'course1Page1',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-sing-menu-sing.png')
-          },
-          {
-            routerUrl: 'course1Page2',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-sing-menu-voca.png')
-          },
-          {
-            routerUrl: 'course1Page3',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-sing-menu-lookcircle.png')
-          },
-          {
-            routerUrl: 'index',
-            imgSrc: require('../../../assets/images/commonImg/menu/theme-sing-menu-back.png')
-          },
-        ],
-        playtime: {
-          time: 49.3,
-          randem: Math.random(1000)
-        },
-
-        router: "course1Page3",
-        // musicTimeList: {
-        //   play: {
-        //     beginTime: 0,
-        //     endTime: 31
-        //   }
-        // },
-        flag: false,
-        timerList: [],
-        activeIndex: -1,
-        songItem: [],
-        songList: [{
-            songTime: [{
-                id: "songItem1",
-                beginTime: 8
-              },
-              {
-                id: "songItem2",
-                beginTime: 13
-              },
-              {
-                id: "songItem3",
-                beginTime: 17
-              },
-              {
-                id: "songItem4",
-                beginTime: 19
-              },
-              {
-                id: "songItem5",
-                beginTime: 22
-              }
-            ],
-            audiosMusicUrl: "./static/mp3/level1/level1-09-song.mp3",
-            beginTime: 0, //歌曲开始时间
-            endTime: 31, //歌曲结束时间
-            endLyric: 25 //歌词结束时间
-          },
-          {
-            songTime: [{
-                id: "songItem1",
-                beginTime: 8
-              },
-              {
-                id: "songItem2",
-                beginTime: 13
-              },
-              {
-                id: "songItem3",
-                beginTime: 17
-              },
-              {
-                id: "songItem4",
-                beginTime: 19
-              },
-              {
-                id: "songItem5",
-                beginTime: 22
-              }
-            ],
-            audiosMusicUrl: "./static/mp3/level1/level1-09-instrumental.mp3",
-            beginTime: 0,
-            endTime: 31,
-            endLyric: 25
-          }
-        ],
-        playerOptions: {
-          autoplay: false, //如果true,浏览器准备好时开始回放。
-          muted: false, // 默认情况下将会消除任何音频。
-          loop: false, // 导致视频一结束就重新开始。
-          preload: "auto", // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-          language: "zh-CN",
-          aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-          sources: [{
-            type: "video/mp4",
-            src: "./static/mp4/level1-09.mp4" //你的视频地址（必填）
-          }],
-          poster: "", //你的封面地址
-          width: document.documentElement.clientWidth,
-          notSupportedMessage: "此视频暂无法播放，请稍后再试" //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-          //controlBar: {
-          //timeDivider: true,
-          //durationDisplay: true,
-          //remainingTimeDisplay: false,
-          //fullscreenToggle: true  //全屏按钮
-          //}
-        },
-        isShowVideo: false,
-        isDisabled: false,
-        isPause: false
-      };
-    },
-    methods: {
-      beginVideo() {
-        this.isShowVideo = true;
-        this.activeIndex = -1;
-        this.isPause = false;
-        this.$refs.audioss.pausePlay();
-        this.clearTimer();
+export default{
+	name:'try',
+  components: {
+    VueAudio
+  },
+	data(){
+		return{
+			isRolling:false,
+      value1: 50,
+      audios: {
+        url: "./static/mp3/level1/level1-01.mp3",
+        controlList: "noDownload noSpeed onlyOnePlaying"
       },
-      beginMusicAndEnd(item, index) {
+      rightAudios:'./static/mp3/music.mp3',
+      errorAudios:'./static/mp3/click.mp3',
+      playtime: {
+        time: 0.5,
+        randem: Math.random(1000),
+        stopTime: 2.4
+      },
+      router: "course1page3",
+      menuList:[//右侧菜单
+          {
+            routerUrl:'L1Course1Day1Page1',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-voca.png')
+          },
+          {
+            routerUrl:'L1Course1Day1Page2',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-lookchoose.png')
+          },
+          {
+            routerUrl:'index?id=L1Course1',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-back.png')
+          }
+      ],
+      first_Item:'',//首次翻转Index
+      oldRoll_Index:'',
+      cardBaseList:[{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img3.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          name: "a",
+          groupId:3,
+          isRolling:false,
+        },{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img1.png'),
+          beginTime:3,
+          endTime:1.5,
+          name: "b",
+          groupId:1,
+          isRolling:false,
+        },{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img2.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          name: "c",
+          groupId:2,
+          isRolling:false,
+        },{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img4.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          name:"d",
+          groupId:4,
+          isRolling:false,
+        },{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img4.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          name:"b",
+          groupId:5,
+          isRolling:false,
+        },{
+          imgSrc:require('@//assets/images/level1/course1/day1-p1-img4.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          name:"a",
+          groupId:6,
+          isRolling:false,
+        }
+      ],
+      cardList:[{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          name:"Ant",
+          groupId:2,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime:3,
+          endTime:1.5,
+          name:"Ant",
+          groupId:1,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          name:"bear",
+          groupId:3,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          name:"Apple",
+          groupId:4,
+          isRolling:false,
+      },{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          name:"ant",
+          groupId:5,
+          isRolling:false,
+      },{
+          imgSrc:require('@/assets/images/commonImg/beike-o.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          name:"Bee",
+          groupId:6,
+          isRolling:false,
+      }],
+      flag: false,
+      isRight: false,
+      timerList: [],
+      deerStep: true
+		}
+	},
+  watch: {
+      // cardList:{
+      //   handler:function(newVal,oldVal){
+      //     console.log(newVal)
+      //     this.cardList = newVal;
+      //   },
+      //   deep: true
+      // },
+      // cardBaseList:{
+      //   handler:function(newVal,oldVal){
+      //     console.log(newVal)
+      //     this.cardBaseList = newVal;
+      //   },
+      //   deep: true
+      // }
+  },
+  methods:{
+    beginMusicAndEnd(item,index,type){
         let that = this;
-        if (that.isDisabled) {
-          that.isPause = true;
-          that.activeIndex = -1;
-          that.clearTimer();
-          let mSongList = this.songList[index];
-          // console.log(mSongList);
-          this.audios.url = this.songList[index].audiosMusicUrl;
-          if (item == "play") {
-            that.$refs.audioss.getplay();
-            for (var song = 0; song < mSongList.songTime.length; song++) {
-              that.timerList[song] = window.setTimeout(
-                pos => {
-                  that.activeIndex = pos;
-                },
-                mSongList.songTime[song].beginTime * 1000,
-                song
-              );
+        if(type==1){// 类型1  一是播放当前音频  二是匹对看否正确
+            if(that.first_Item){
+                // console.log('匹对中')
+                if(item.groupId != that.first_Item.groupId){
+                    console.log('不匹配')
+                    // that.audios.url = that.errorAudios;
+                    setTimeout(() => {
+                        that.cardList[index].isRolling = false;
+                        that.first_Item = '';
+                    }, 1000);
+                  }else{
+                    console.log('匹配');
+                    // that.audios.url = that.rightAudios;
+                    that.isRight = true;
+                    // that.
+                    that.first_Item = '';
+                  }
+            }else{
+              console.log('播放音频1')
             }
-          }
-          this.playtime.randem = Math.random(1000);
-          this.playtime.time = this.songList[index].beginTime;
-          let stop = mSongList.endTime * 1000;
-          let stopLyric = mSongList.endLyric * 1000;
-          that.timerList[mSongList.songTime.length] = window.setTimeout(() => {
-            that.activeIndex = -1;
-          }, stopLyric);
-          that.timerList[mSongList.songTime.length + 1] = window.setTimeout(
-            () => {
-              that.isPause = false;
-              that.$refs.audioss.pausePlay();
-              that.clearTimer();
-            },
-            stop
-          );
-        } else {
-          // console.log("wait title");
+        }else if(type==2){//类型2   一是播放音频 二是翻转动画
+            if(item.isRolling) return;
+           
+            if(!!!that.first_Item){
+              console.log("first");
+              that.first_Item = item;
+              that.cardList[index].isRolling = true;
+            }else{
+              if(item!= that.first_Item){
+                 console.log("请选择匹配项")
+              }else{
+                 console.log("播放音频2")
+              }
+             
+            }
         }
-      },
-      pauseItem() {
-        this.activeIndex = -1;
-        this.isPause = false;
-        this.$refs.audioss.pausePlay();
-        this.clearTimer();
-      },
-      clearTimer() {
-        for (let i = 0; i <= this.timerList.length; i++) {
-          window.clearTimeout(this.timerList[i]);
-        }
-        this.timerList.splice(0, this.timerList.length);
-      }
+
+        // if(that.isRight){
+
+        // }
     },
-    mounted() {
-      let that = this;
-      that.flag = true;
-      that.timerList[0] = window.setTimeout(() => {
+    playAudio(item){
+        let that = this;
+        this.playtime.randem = Math.random(1000);
+        that.playtime.time = item.beginTime; 
+        that.playtime.stopTime = item.endTime;
+     
+        that.flag = true;
         that.$refs.audioss.startPlay();
-        clearTimeout(that.timerList[0]);
-      }, 100);
-      that.timerList[1] = window.setTimeout(() => {
-        that.$refs.audioss.pausePlay();
-        that.isDisabled = true;
-        clearTimeout(that.timerList[1]);
-      }, 6500);
     },
-    computed: {
-      player() {
-        return this.$refs.videoPlayer.player;
+    // beginMusicAndEnd(item,index){
+    //   let that = this;
+    //   that.cardBaseList[index].isRolling = true;
+   
+    //   this.playtime.randem = Math.random(1000);
+    //   that.playtime.time = that.cardList[index].beginTime; 
+    //   that.playtime.stopTime = that.cardList[index].endTime;
+     
+    //   that.flag = true;
+    //   that.$refs.audioss.startPlay();
+    // },
+    // beginMusicAndEndB(item, index) {
+    //   let that = this;
+    //   if(item.isRolling) return;
+    //   that.cardList[index].isRolling = true;
+    //   if(!!!that.first_Item){
+    //     console.log('first')
+    //     that.first_Item = item;
+    //   }else{
+    //       console.log(that.first_Item);
+    //       if(item.groupId !=that.first_Item.groupId){
+    //         console.log('不匹配')
+    //         // that.audios.url = that.errorAudios;
+    //         setTimeout(() => {
+    //            // that.cardList[index].isRolling = false;
+    //             that.first_Item.isRolling = false;
+    //             that.cardList[index].isRolling = false;
+    //             that.first_Item = '';
+    //         }, 1000);
+    //       }else{
+    //         console.log('匹配');
+    //         // that.audios.url = that.rightAudios;
+    //         that.first_Item = '';
+    //       }
+    //   }
+    //   this.playtime.randem = Math.random(1000);
+    //   that.playtime.time = that.cardBaseList[index].beginTime; 
+    //   that.playtime.stopTime = that.cardBaseList[index].endTime;
+     
+    //   that.flag = true;
+    //   that.$refs.audioss.startPlay();
+     
+    // },
+    clearTimer() {
+      for (let i = 0; i <= this.timerList.length; i++) {
+        window.clearTimeout(this.timerList[i]);
+      }
+      this.timerList.splice(0, this.timerList.length);
+    },
+    shuffle(arr) {
+      // var i = arr.length, t, j;
+     for (let i = 1; i < arr.length; i++) {
+          const random = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[random]] = [arr[random], arr[i]];
+      }
+      console.log(arr);
+      return arr;
+    }
+  },
+  mounted(){
+    // console.log('mounted');
+    var that = this;
+    
+    that.cardList.sort(function () { 
+      return Math.random() - 0.5; 
+    }); 
+    that.cardBaseList.sort(function () { 
+      return Math.random() - 0.5; 
+    }); 
+
+    // console.log(that.cardList);
+    // console.log(that.cardBaseList);
+  },
+}
+</script>
+<style lang='less' scoped>
+@import "../../../assets/css/index";
+@import "../../../assets/css/shellHunt";
+@rem: 128rem;
+
+.a_page_2 {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  .content{
+    width: 1280/@rem !important;
+    .content-match-base,.content-match-cardList{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: auto;
+      justify-content: space-around;
+      // .each-pic{
+      //     width: 265/@rem !important;
+      // }
+      .itemBg{
+         width: 93/@rem;
+         height: 93/@rem;
+         line-height: 93/@rem;
+         display: block;
+         background: url('../../../assets/images/commonImg/hunt1.png') no-repeat;
+         background-size: cover;
+         font-size: 40/@rem;
+         text-align: center;
+         color: #fff;
+      }
+      img{
+        display: inline-block;
+        width: 100%;
       }
     }
-  };
-</script>
-
-<style lang="less" scoped>
-  @import "../../../assets/css/index";
-  @import "../../../assets/css/letSing";
-  @rem: 128rem;
-
-      .content {
-        .item {
-          width: 425 / @rem;
-          height: 60 / @rem;
-          display: block;
-          margin-top: 10 / @rem;
-          background: url("../../../assets/images/level1/course9/sText2.png") no-repeat;
-          background-size: 850 / @rem 419 / @rem;
-
-          &.item1 {
-            height: 80 / @rem;
-            background-position: 0 0 / @rem;
-            margin-top: 56 / @rem;
-          }
-
-          &.item2 {
-            background-position: 0 -96 / @rem;
-          }
-
-          &.item3 {
-            background-position: 0 -168 / @rem;
-          }
-
-          &.item4 {
-            background-position: 0 -242 / @rem;
-          }
-
-          &.item5 {
-            background-position: 0 -308 / @rem;
-          }
-
-          &.item6 {
-            background-position: 0 -380 / @rem;
-          }
-
-          &.active {
-            background-position-x: -425 / @rem;
-          }
-
-          img {
-            width: 100%;
-            display: block;
-          }
-        }
+    .content-match-base{
+      .each-pic:nth-child(2n){
+        margin-top: 50/@rem;
       }
+    }
+    .content-match-cardList{
+      margin-top: 190/@rem;
+      height: 247/@rem;
+    }
+  }
+}
+.contentbox{
+    position: relative;
+    width: 200/@rem;
+    height: 210/@rem;
+    color: #fff;
+    font-size: 32/@rem;
+    text-align: center;
+    .item-text{
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+    }
+    .item-img{
+        position: absolute;
+        bottom: 10/@rem;
+        left: 10/@rem;
+        width: 175/@rem;
+        height: 110/@rem;
+    }
+    .item-img2{
+        width: 175/@rem;
+        height: 189/@rem;
+    }
+}
 </style>

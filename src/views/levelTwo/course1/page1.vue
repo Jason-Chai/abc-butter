@@ -1,7 +1,7 @@
 <template>
-  <div class="a_page_2">
+<div class="a_page_2">
     <div class="bg-div">
-      <div class="animate-bg" :class="{'animate-step':deerStep}" ref="deer"/>
+      <!-- <div class="animate-bg" :class="{'animate-step':deerStep}" ref="deer"/> -->
       <div class="audio">
         <VueAudio
           ref="audioss"
@@ -13,156 +13,210 @@
           :menuList="menuList"
         ></VueAudio>
       </div>
-      <div class="page2-content">
+      <div class="page1-content">
         <div class="content">
-          <div ref="word1" @click="beginMusicAndEnd('word1', 1)" class="each-pic pic1">
-            <img src="../../../assets/images/level1/course9/day1-p2-img1.png" alt>
-          </div>
-          <div ref="word2" @click="beginMusicAndEnd('word2', 2)" class="each-pic pic2">
-            <img src="../../../assets/images/level1/course9/day1-p2-img2.png" alt>
-          </div>
-          <div ref="word3" @click="beginMusicAndEnd('word3', 3)" class="each-pic pic3">
-            <img src="../../../assets/images/level1/course9/day1-p2-img3.png" alt>
-          </div>
-          <div ref="word4" @click="beginMusicAndEnd('word4', 4)" class="each-pic pic4">
-            <img src="../../../assets/images/level1/course9/day1-p2-img4.png" alt>
-          </div>
+              <div class="rollbox each-pic" v-for="(item,index) in cardList" :key="index"  @click="beginMusicAndEnd(item,index)" :class="{'box_rolling':item.isRolling}">
+                  <!-- 前面div -->
+                  <div class="rollbox_front">
+                    <div class="contentbox">
+                        <img src="../../../assets/images/commonImg/front.png"/>
+                    </div>
+                  </div>
+                  <!-- 后面div -->
+                  <div class="rollbox_behind">
+                    <div class="contentbox">
+                         <img :src="item.imgSrc" alt>
+                    </div>
+                  </div>
+              </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-import VueAudio from "../../../components/vocabularyMenu";
-export default {
-  name: "",
+import VueAudio from "../../../components/cardMatchMenu";
+// import {getDiscList} from 'api/course'
+//直接进行引入api.js里面的方法 传参数 接受回调
+//举例子
+import { projectlist ,pagesList } from "../../../api/course.js"; // 导入我们的api接口
+
+
+export default{
+	name:'try',
   components: {
     VueAudio
   },
-  data() {
-    return {
+	data(){
+		return{
+			isClick: true,//是否可点击
       value1: 50,
       audios: {
-        url: "./static/mp3/level1/level1-09.mp3",
+        url: "./static/mp3/level1/level1-01.mp3",
         controlList: "noDownload noSpeed onlyOnePlaying"
       },
-      menuList:[//右侧菜单
-          {
-            routerUrl:'course1Page1',
-            imgSrc:require('../../../assets/images/commonImg/menu/theme-voca-menu-lead.png')
-          },
-          {
-            routerUrl:'course1page2',
-            imgSrc:require('../../../assets/images/commonImg/menu/theme-voca-menu-voca.png')
-          },
-          {
-            routerUrl:'course1page3',
-            imgSrc:require('../../../assets/images/commonImg/menu/theme-voca-menu-lookchoose.png')
-          },
-          {
-            routerUrl:'index',
-            imgSrc:require('../../../assets/images/commonImg/menu/theme-voca-menu-back.png')
-          }
-      ],
+      rightAudios:'./static/mp3/music.mp3',
+      errorAudios:'./static/mp3/click.mp3',
       playtime: {
-        time: 10.4,
-        randem: Math.random(1000)
+        time: 0.5,
+        randem: Math.random(1000),
+        stopTime: 2.4
       },
       router: "course1page2",
-      antMoreShow: false,
-      alligatorMoreShow: false,
-      appleMoreShow: false,
-      axMoreShow: false,
-      musicTimeList: {
-        word1: {
-          beginTime: 13.8,
-          endTime: 1.8
+      menuList:[//右侧菜单
+          {
+            routerUrl:'L1Course1Day1Page1',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-voca.png')
+          },
+          {
+            routerUrl:'L1Course1Day1Page2',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-lookchoose.png')
+          },
+          {
+            routerUrl:'index?id=L1Course1',
+            imgSrc:require('../../../assets/images/commonImg/menu/theme-vocan-menu-back.png')
+          }
+      ],
+      first_Item:'',//首次翻转Index
+      oldRoll_Index:'',
+      cardList:[{
+          imgSrc:require('@/assets/images/level1/course1/day1-p1-img1.png'),
+          beginTime:3,
+          endTime:1.5,
+          groupId:1,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/level1/course1/day1-p1-img2.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          groupId:2,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/level1/course1/day1-p1-img3.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          groupId:3,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/level1/course1/day1-p1-img4.png'),
+          beginTime: 10.6,
+          endTime: 1.4,
+          groupId:4,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/level1/course1/day1-p2-img1.png'),
+          beginTime: 5.3,
+          endTime: 1.5,
+          groupId:2,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/level1/course1/day1-p2-img2.png'),
+           beginTime: 10.6,
+           endTime: 1.4,
+           groupId:4,
+           isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/level1/course1/day1-p2-img3.png'),
+          beginTime: 7.8,
+          endTime: 1.6,
+          groupId:3,
+          isRolling:false,
+        },{
+          imgSrc:require('@/assets/images/level1/course1/day1-p2-img4.png'),
+          beginTime:3,
+          endTime:1.5,
+          groupId:1,
+          isRolling:false,
         },
-        word2: {
-          beginTime: 17.2,
-          endTime: 1.8
-        },
-        word3: {
-          beginTime: 20.5,
-          endTime: 1.8
-        },
-        word4: {
-          beginTime: 23.5,
-          endTime: 1.8
-        }
-      },
+      ],
       flag: false,
       timerList: [],
       deerStep: true
-    };
+		}
+	},
+  created(){
+     pagesList().then(res => {
+       console.log(res);
+     })
+      //  projectlist(
+      //  {
+      //     name:"小坦克",
+      //     password:"3485"
+      //  }
+      //  ).then(res => {
+      //      console.log(res)
+      //  });
   },
-  methods: {
+  methods:{
     beginMusicAndEnd(item, index) {
+      
       let that = this;
-      that.clearTimer();
-
-      // console.log("传入的数据：", index);
-      that[item + "MoreShow"] = true;
-      if (index != undefined) {
-        that.$refs["word" + index].style.animation = "";
-        let tempTimer = window.setTimeout(() => {
-          that.$refs["word" + index].style.animation = "fadeIn 1s 0s both";
-          window.clearTimeout(tempTimer);
-        }, 10);
-
-        // that.$refs["right" + index].style.opacity = "1";
+      if(item.isRolling) return;
+      that.cardList[index].isRolling = true;
+      if(!!!that.first_Item){
+        console.log('first')
+        that.first_Item = item;
+      }else{
+          console.log(that.first_Item);
+          if(item.groupId !=that.first_Item.groupId){
+            console.log('不匹配')
+            // that.audios.url = that.errorAudios;
+            setTimeout(() => {
+               // that.cardList[index].isRolling = false;
+                that.first_Item.isRolling = false;
+                that.cardList[index].isRolling = false;
+                that.first_Item = '';
+            }, 1000);
+          }else{
+            console.log('匹配');
+            // that.audios.url = that.rightAudios;
+            that.first_Item = '';
+          }
       }
+   
       this.playtime.randem = Math.random(1000);
-      this.playtime.time = this.musicTimeList[item].beginTime;
-      let stop = this.musicTimeList[item].endTime * 1000;
-      // this.$refs.audios.startPlay();
+      that.playtime.time = that.cardList[index].beginTime; 
+      that.playtime.stopTime = that.cardList[index].endTime;
+     
       that.flag = true;
-      that.timerList[3] = window.setTimeout(() => {
-        that.$refs.audioss.pausePlay();
-        that.clearTimer();
-      }, stop);
+      that.$refs.audioss.startPlay();
+     
     },
+    // _getDiscList() {
+    //     if (!this.disc.dissid) {
+    //       this.$router.push('/recommend')
+    //       return
+    //     }
+    //     getDiscList(this.disc.dissid).then((res) => {
+    //       if (res.code === ERR_OK) {
+    //         this.songs = this._normalizeSongs(res.cdlist[0].songlist)
+    //       }
+    //     })
+    // },
     clearTimer() {
       for (let i = 0; i <= this.timerList.length; i++) {
         window.clearTimeout(this.timerList[i]);
       }
       this.timerList.splice(0, this.timerList.length);
     }
-  },
-  mounted() {
-    let that = this;
-    that.flag = true;
-    that.timerList[0] = window.setTimeout(() => {
-      that.$refs.audioss.startPlay();
-      clearTimeout(that.timerList[0]);
-      // that.clearTimer()
-    }, 100);
-    that.timerList[1] = window.setTimeout(() => {
-      that.$refs.audioss.pausePlay();
-      clearTimeout(that.timerList[1]);
-      // that.clearTimer()
-    }, 2400);
-    that.$refs.deer.addEventListener("animationend", function() {
-      that.deerStep = false;
-      let deerTime = window.setTimeout(() => {
-        that.deerStep = true;
-        window.clearTimeout(deerTime);
-      }, 5000);
-    });
   }
-};
+}
 </script>
-
-<style lang="less" scoped>
+<style lang='less' scoped>
 @import "../../../assets/css/index";
-@import "../../../assets/css/vocabulary";
+@import "../../../assets/css/cardMatch";
 @rem: 128rem;
 
 .a_page_2 {
   margin: 0 auto;
   width: 100%;
   height: 100%;
+  .content{
+    width: 1080/@rem !important;
+    .each-pic{
+      margin-right: 40/@rem;
+      margin-bottom: 20/@rem;
+    }
+  }
 }
-
 </style>

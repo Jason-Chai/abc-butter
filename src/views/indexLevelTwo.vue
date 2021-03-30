@@ -82,23 +82,24 @@ export default {
       count: 0,
       isPlaying: false,
       bg: "",
-      // curImg1: require("@/assets/images/commonImg/level2Index1Title.png"),
-      // curImg2: require("@/assets/images/commonImg/level2Index2Title.png"),
-      // curImg3: require("@/assets/images/commonImg/level2Index3Title.png"),
-      // curImg4: require("@/assets/images/commonImg/level2Index4Title.png"),
-      // curImg5: require("@/assets/images/commonImg/level2Index5Title.png"),
-      // curImg6: require("@/assets/images/commonImg/level2Index6Title.png"),
-      // curImg7: require("@/assets/images/commonImg/level2Index7Title.png"),
-      // curImg8: require("@/assets/images/commonImg/level2Index8Title.png"),
-      // curImg9: require("@/assets/images/commonImg/level2Index9Title.png"),
-      // curImg10: require("@/assets/images/commonImg/level2Index10Title.png"),
-      // curImg11: require("@/assets/images/commonImg/level2Index11Title.png"),
-      // curImg12: require("@/assets/images/commonImg/level2Index12Title.png"),
-      // curImg13: require("@/assets/images/commonImg/level2Index13Title.png"),
-      // curImg14: require("@/assets/images/commonImg/level2Index14Title.png"),
-      // curImg15: require("@/assets/images/commonImg/level2Index15Title.png"),
-      // curImg16: require("@/assets/images/commonImg/level2Index16Title.png"),
-      // curImg17: require("@/assets/images/commonImg/level2Index17Title.png"),
+      pageData:{
+         lessionList:[{
+           icon:'',
+           model:'Warmp',//1:Warmp up; 2:Introduction; 3:Presentation;4:Playtime;5:Closure
+         },{
+           icon:'',
+           model:'Introduction'
+         },{
+           icon:'',
+           model:'Presentation'
+         },{
+           icon:'',
+           model:'Playtime'
+         },{
+           icon:'',
+           model:'Closure'
+         }]
+      },
       animateNum: 100
     };
   },
